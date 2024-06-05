@@ -8,7 +8,7 @@ void	swap(int *a, int *b)
 #include <stdlib.h>
 #include <stdio.h>
 
-int	insertion_sort(int arr[], int n)
+int	bubble_sort(int arr[], int n)
 {
 	int i = 0;
 	int j = 0;
@@ -42,7 +42,8 @@ int main(int argc, char *argv[])
 		}
 		
 		int n = argc - 1;
-		int count = insertion_sort(arr, n);
+		int count = bubble_sort
+		(arr, n);
 
 		printf("count: %d\n", count);
 
