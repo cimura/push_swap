@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/07 16:57:43 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/07 17:38:42 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void pa(t_node *head_a, t_node *head_b)
 
 int find_cheapest_num(t_node *head_a, t_node *head_b, int indx)
 {
-	int	forward_count = 0;
-	int back_count = 0;
+	int	forward_count = 1;
+	int back_count = 1;
 
 	t_node *current_a = go_x_steps(head_a, indx);
 
@@ -84,17 +84,28 @@ int find_cheapest_num(t_node *head_a, t_node *head_b, int indx)
 	t_node *current_b = head_b->next;
 	// printf("--- b !!! ---\nnode->data: %d\n",current_b->data);
 
-	while (current_b != NULL && (current_a->data) < (current_b->data))
+	// while (current_b != NULL && (current_a->data) < (current_b->data))
+	while (1)
 	{
+		// max 谷を見つける
+		if (current_b->data <= current_b->next->data && current_a->data > current_b->data)
+			break ;
+		// ハマるところを見つける
+		if (current_a->data < current_b->data && current_a->data >= current_b->next->data)
+			break ;
 		current_b = current_b->next;
 		forward_count++;
 	}
 	current_b = head_b->prev;
-	// printf("----- prev ----- !!! \ncurrent_b->data: %d\n\n", current_b->data);
 
-
-	while (current_b != NULL && (current_a->data) < (current_b->data))
+	while (1)
 	{
+		// max 谷を見つける
+		if (current_b->prev->data <= current_b->data && current_a->data > current_b->data)
+			break ;
+		// ハマるところを見つける
+		if (current_a->data > current_b->data && current_a->data <= current_b->prev->data)
+			break ;
 		current_b = current_b->prev;
 		back_count++;
 	}

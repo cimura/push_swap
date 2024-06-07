@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 	print_list(head_a);
 	printf("---b--\n");
 	print_list(head_b);
-	
+
 	printf("\n\n");
 
 	// t_node *now = go_x_steps(head_a, 2);
