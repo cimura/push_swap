@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:55:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/05/12 14:38:54 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/07 11:49:59 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (count == 0 || size == 0)
 		return (malloc(0));
-	// if (count < 0 || size < 0)
-	// 	return (NULL);
-	// if (count > SIZE || size > SIZE)
-	// 	return (NULL);
+	if (count < 0 || size < 0)
+		return (NULL);
+	if (count > SIZE || size > SIZE)
+		return (NULL);
 	if (SIZE_MAX / count < size)
 		return (NULL);
 	total_size = count * size;
@@ -38,11 +38,4 @@ void	*ft_calloc(size_t count, size_t size)
 		i++;
 	}
 	return ((void *)ptr);
-}
-
-#include <limits.h>
-
-int main(){
-	calloc(0, INT_MIN);
-	ft_calloc(0, INT_MIN);
 }
