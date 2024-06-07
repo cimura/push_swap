@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/07 16:45:21 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/07 18:22:08 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void	pb(t_node *head_a, t_node *head_b)
 
 	a_first->next = b_first;
 	b_first->prev = a_first;
+	ft_putstr_fd("pb\n", 1);
 }

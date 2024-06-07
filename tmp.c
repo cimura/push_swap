@@ -30,9 +30,9 @@ int main(int argc, char *argv[])
 
 	pb(head_a, head_b);
 	pb(head_a, head_b);
-	pb(head_a, head_b);
-	pb(head_a, head_b);
-	pb(head_a, head_b);
+	// pb(head_a, head_b);
+	// pb(head_a, head_b);
+	// pb(head_a, head_b);
 
 	printf("-- a ---\n");
 	print_list(head_a);
@@ -45,14 +45,60 @@ int main(int argc, char *argv[])
 	// printf("expected 34 -> %d\n", now->data);
 
 	// aのスタックを見てbにpushするものを決める
-	int indx = 1;
-	printf("indx-> %d\n", indx);
-	int cheapest_num = find_cheapest_num(head_a, head_b, indx);
+	// int indx = 1;
+	// printf("indx-> %d\n", indx);
+	t_operations *operations = check_stack_a(head_a, head_b);
 	
-	t_node *now_seeing = go_x_steps(head_a, indx);
-	printf("\nnode->data: %d\n",now_seeing->data);
+	// t_node *now_seeing = go_x_steps(head_a, indx);
+	// printf("\nnode->data: %d\n",now_seeing->data);
 
-	printf("cheapest num: %d\n\n", cheapest_num);
+	printf("cheapest num __count__: %d\n\n", operations->b_count);
+	printf("cheapest num __rotation__: %d\n\n", operations->b_rotation);
+	printf("cheapest num __a_indx__: %d\n\n", operations->a_indx);
+
+	i = 0;
+	while (i < operations->b_count)
+	{
+		if (operations->b_rotation > 0)
+			rb(head_b);
+		else
+			rrb(head_b);
+		i++;
+	}
+	pb(head_a, head_b);
+
+	printf("\x1b[32m");
+
+	printf("-- a ---\n");
+	print_list(head_a);
+	printf("---b--\n");
+	print_list(head_b);
+
+	printf("\x1b[m");
+
+	// if (cheapest_num > 0)
+	// {
+	// 	int i = 0;
+	// 	while (i < cheapest_num)
+	// 	{
+
+	// 		i++;
+	// 	}
+	// }
+	// else
+	// {
+	// 	cheapest_num -= 1;
+	// 	int i = 0;
+	// 	while (i < cheapest_num)
+	// 	{
+			
+	// 		i++;
+	// 	}
+	// }
+	// printf("-- a ---\n");
+	// print_list(head_a);
+	// printf("---b--\n");
+	// print_list(head_b);
 
 	return (0);
 }

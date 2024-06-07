@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/07 16:06:32 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/07 18:09:58 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,20 @@ typedef	struct	s_node
 
 typedef struct s_operatons
 {
-	char	*operations;
-	int		data;
+	int	b_rotation;
+	int	b_count;
+	int	a_indx;
 }				t_operations;
 
 
 void	ft_putstr_fd(char *s, int fd);
 
-void	sa(t_node *head_a);
-void	ra(t_node *head_a);
-void	rra(t_node	*head_a);
-void	pa(t_node *head_a, t_node *head_b);
-int		find_cheapest_num(t_node *head_a, t_node *head_b, int indx);
-int		check_stack_a(t_node *head_a, t_node *head_b);
+void			sa(t_node *head_a);
+void			ra(t_node *head_a);
+void			rra(t_node	*head_a);
+void			pa(t_node *head_a, t_node *head_b);
+int				find_cheapest_num(t_node *head_a, t_node *head_b, int indx);
+t_operations	*check_stack_a(t_node *head_a, t_node *head_b);
 
 void	sb(t_node *head_b);
 void	rb(t_node *head_b);

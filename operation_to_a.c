@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/07 17:38:42 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/07 18:22:18 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void pa(t_node *head_a, t_node *head_b)
 	head_b->next = b_first->next;
 	head_a->next = b_first;
 	b_first->next = a_first;
+	ft_putstr_fd("pa\n", 1);
 }
 
 int find_cheapest_num(t_node *head_a, t_node *head_b, int indx)
@@ -77,14 +78,8 @@ int find_cheapest_num(t_node *head_a, t_node *head_b, int indx)
 	int back_count = 1;
 
 	t_node *current_a = go_x_steps(head_a, indx);
-
-	// if (current_a == NULL)
-	// 	continue;
-
 	t_node *current_b = head_b->next;
-	// printf("--- b !!! ---\nnode->data: %d\n",current_b->data);
 
-	// while (current_b != NULL && (current_a->data) < (current_b->data))
 	while (1)
 	{
 		// max 谷を見つける
@@ -113,20 +108,34 @@ int find_cheapest_num(t_node *head_a, t_node *head_b, int indx)
 	printf("backword: %d\n", back_count);
 	if (forward_count < back_count)
 		return (forward_count);
-	return (-back_count);
+	return (back_count);
 }
 
-int check_stack_a(t_node *head_a, t_node *head_b)
+t_operations *check_stack_a(t_node *head_a, t_node *head_b)
 {
 	int i = 0;
+	t_operations *operations;
+	operations = malloc(sizeof(t_operations));
+	operations->b_rotation = 1;
 	int	current_count;
-	int right_count = INT_MAX;
+	int min_count = INT_MAX;
 	while (i < 4)
 	{
 		current_count = find_cheapest_num(head_a, head_b, i);
-		if (current_count < right_count)
-			right_count = current_count;
+		if (current_count < 0)
+		{
+			operations->b_rotation = -1;
+			current_count *= -1;
+		}
+		current_count += i;
+		printf("current_count: %d\n\n", current_count);
+		if (current_count < min_count)
+		{
+			min_count = current_count;
+			operations->a_indx = i;
+		}
 		i++;
 	}
-	return (right_count);
+	operations->b_count = min_count;
+	return (operations);
 }
