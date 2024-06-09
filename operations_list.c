@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:13 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/07 15:46:19 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/09 15:35:09 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ t_node	*initialize_stack()
 	return (head);
 }
 
-void	add_node(t_node *head, int data)
+void	add_node(t_node **head, int data)
 {
 	t_node	*new_node = create_node(data);
-	t_node	*last = head->prev;
+	t_node	*last = (*head)->prev;
 
-	new_node->next = head;
+	new_node->next = (*head);
 	new_node->prev = last;
 	last->next = new_node;
-	head->prev = new_node;
+	(*head)->prev = new_node;
 }
 
 void	print_list(t_node *head)
@@ -53,21 +53,9 @@ void	print_list(t_node *head)
 	printf("\n");
 }
 
-int	count_list_nodes(t_node *head)
+t_node	*go_x_steps(t_node **head, int num)
 {
-	t_node	*current = head;
-	int count = 0;
-	while (current != NULL)
-	{
-		current = current->next;
-		count++;
-	}
-	return (count);
-}
-
-t_node	*go_x_steps(t_node *head, int num)
-{
-	t_node *current = head->next;
+	t_node *current = (*head)->next;
 	int i = 0;
 	while (current != NULL && i < num)
 	{
