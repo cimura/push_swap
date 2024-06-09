@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/09 16:11:23 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:31:16 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,21 +146,21 @@ int find_cheapest_num(t_node **head_a, t_node **head_b, int indx)
 	return (-(back_count + indx));
 }
 
-t_operations *check_stack_a(t_node **head_a, t_node **head_b)
+t_node *check_stack_a(t_node **head_a, t_node **head_b)
 {
 	int i = 0;
-	t_operations *operation;
-	operation = malloc(sizeof(t_operations));
-	operation->rotation = 1;
+	// t_operations *operation;
+	// operation = malloc(sizeof(t_operations));
+	// operation->rotation = 1;
 	int	current_count;
 	int min_count = INT_MAX;
 	while (i < 4)
 	{
-		operation->push_cost = 0;
+		// operation->push_cost = 0;
 		current_count = find_cheapest_num(&(*head_a), &(*head_b), i);
 		if (current_count < 0)
 		{
-			operation->rotation = -1;
+			// operation->rotation = -1;
 			current_count *= -1;
 		}
 		// current_count += i;
@@ -168,12 +168,12 @@ t_operations *check_stack_a(t_node **head_a, t_node **head_b)
 		if (current_count < min_count)
 		{
 			min_count = current_count;
-			operation->a_indx = i;
+			// operation->a_indx = i;
 		}
 		printf("min_count: %d\n\n", min_count);
 
 		i++;
 	}
-	operation->push_cost = min_count;
-	return (operation);
+	// operation->push_cost = min_count;
+	return (*head_a);
 }

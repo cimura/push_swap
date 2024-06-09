@@ -41,11 +41,21 @@ int main(){
 // 先頭に持ってくるコストを計算することもできる。回転の向きも構造体で持っている
 // あとはそのコストに基づいてどのnodeをpushするかを決め、ループで回す
 
-	t_operations *operation = malloc(sizeof(t_operations));
+// 追記...t_operationsを作らなくても、t_nodeに回転やインデックスを持たせればいっか！！
 
-	t_node *target = find_target(head_a->next->next->next->next, head_b);
+	// t_operations *operation = malloc(sizeof(t_operations));
+
+	// t_node *target = find_target(head_a->next->next->next->next, head_b);
+	// printf("target->data\t->\t%d\n", target->data);
+	// int count = calculate_push_cost(head_b, target, operation);
+	// printf("count\t\t->\t%d\n", count);
+	// printf("rotation\t->\t%d\n", operation->rotation);
+
+	// t_operations *operation = malloc(sizeof(t_operations));
+
+	t_node *target = find_target(head_a->next, head_b);
 	printf("target->data\t->\t%d\n", target->data);
-	int count = calculate_push_cost(head_b, target, operation);
+	int count = calculate_push_cost(head_b, target);
 	printf("count\t\t->\t%d\n", count);
-	printf("rotation\t->\t%d\n", operation->rotation);
+	printf("rotation\t->\t%d\n", head_b->rotation);
 }
