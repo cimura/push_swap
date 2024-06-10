@@ -72,6 +72,8 @@ int main()
 				printf("\x1b[39m\n");
 			}
 			current = current->next;
+			// if (current == head_a)
+			// 	break ;
 		}
 
 		int i = 0;
@@ -98,7 +100,7 @@ int main()
 		printf("\x1b[32mRotated B %d times\n", head_b->push_cost);
 		printf("\x1b[39m");
 
-		printf("-- Before pb --\n");
+		printf("\n-- Before pb --\n");
 		printf("-- a ---\n");
 		print_list(head_a);
 		printf("---b--\n");
@@ -106,7 +108,7 @@ int main()
 
 		pb(&head_a, &head_b);
 
-		printf("-- After pb --\n");
+		printf("\n-- After pb --\n");
 		printf("-- a ---\n");
 		print_list(head_a);
 		printf("---b--\n");

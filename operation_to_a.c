@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation_to_a.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/10 18:03:46 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/11 00:41:15 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,18 @@ void rra(t_node **head_a)
 void pa(t_node **head_a, t_node **head_b)
 {
 	t_node *a_first = (*head_a)->next;
-	t_node *b_first = (*head_b)->next;
 
-	(*head_b)->next = b_first->next;
+	t_node *b_first = (*head_b)->next;
+	t_node *b_second = b_first->next;
+
+	(*head_b)->next = b_second;
+	b_second->prev = (*head_b);
+
 	(*head_a)->next = b_first;
+	b_first->prev = (*head_a);
+
 	b_first->next = a_first;
+	a_first->prev = b_first;
 	ft_putstr_fd("pa\n", 1);
 }
 

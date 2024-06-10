@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation_to_b.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/10 15:04:07 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/11 00:56:54 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	rb(t_node **head_b)
 
 void	rrb(t_node	**head_b)
 {
+	printf("Stack B before rrb: ");
+    print_list(*head_b);
 	if ((*head_b)->next == (*head_b) || (*head_b)->prev == (*head_b))
 		return ;
 	t_node	*first = (*head_b)->next;
@@ -58,16 +60,28 @@ void	rrb(t_node	**head_b)
 	(*head_b)->prev = last_second;
 	last_second->next = (*head_b);
 
+	printf("Stack B after rrb: ");
+    print_list(*head_b);
+
 	ft_putstr_fd("rrb\n", 1);
 }
+
+// b 
+// h 1 5 4 0 h
+// h 0 1 5 4 h
 
 void	pb(t_node **head_a, t_node **head_b)
 {
 	t_node	*a_first = (*head_a)->next;
+	t_node	*a_second = a_first->next;
+
 	t_node	*b_first = (*head_b)->next;
 
-	(*head_a)->next = a_first->next;
+	(*head_a)->next = a_second;
+	a_second->prev = (*head_a);
+
 	(*head_b)->next = a_first;
+	a_first->prev = (*head_b);
 
 	a_first->next = b_first;
 	b_first->prev = a_first;
