@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/09 16:35:24 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:45:16 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ typedef	struct	s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 	int				data;
-	int				to_push;
-	int				a_indx;
+	int				current_push_cost;
+	int				push_cost;
+	int				push_data;
 	int				rotation;
 }				t_node;
 
@@ -69,9 +70,9 @@ void	handle_three_nodes(t_node *head_a);
 t_node	*find_max_node(t_node *head);
 t_node	*find_min_node(t_node *head);
 t_node	*find_last_node(t_node *head);
-t_node	*find_target(t_node	*pos_a, t_node *head_b);
+t_node	*find_target(t_node	*head_b, t_node *pos_a);
 
 // in calculate_push_cost.c
-int	calculate_push_cost(t_node *head, t_node *pos);
+int	calculate_push_cost(t_node *head, t_node *pos, int rewrite_enabled);
 
 # endif

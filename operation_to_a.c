@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/09 16:31:16 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:03:46 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,13 @@ void pa(t_node **head_a, t_node **head_b)
 // これを基にpushコストを計算できるが、構造体でどちらに回転すべきかの情報を
 // 持っておかないといけない
 
-t_node	*find_target(t_node	*pos_a, t_node *head_b)
+t_node	*find_target(t_node	*head_b, t_node *pos_a)
 {
 	t_node	*max_node_b;
 	t_node	*min_node_b;
 	t_node	*current = head_b->next;
+	t_node	*target = head_b->next;
+	int		diff = INT_MAX;
 
 	max_node_b = find_max_node(head_b);
 	min_node_b = find_min_node(head_b);
@@ -87,13 +89,18 @@ t_node	*find_target(t_node	*pos_a, t_node *head_b)
 		return (max_node_b);
 	while (current != head_b)
 	{
-		if (pos_a->data > current->data && current->data >= current->next->data)
-			break ;
-		// if (head_b->data >= head_b->next->data && pos_a->data > head_b->data)
-		// 	break ;
+		if (diff > pos_a->data - current->data && pos_a->data - current->data > 0)
+		{
+			diff = pos_a->data - current->data;
+			target = current;
+		}
+		// if (pos_a->data > current->data && current->data >= current->next->data)
+		// 	target = current;
+		// if (diff > 0 && pos_a->data > current->data)
+		// 	target = current;
 		current = current->next;
 	}
-	return (current);
+	return (target);
 }
 
 int find_cheapest_num(t_node **head_a, t_node **head_b, int indx)

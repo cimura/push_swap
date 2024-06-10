@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/09 15:25:35 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:04:07 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	rrb(t_node	**head_b)
 	if ((*head_b)->next == (*head_b) || (*head_b)->prev == (*head_b))
 		return ;
 	t_node	*first = (*head_b)->next;
-	t_node	*last = first->prev;
+	t_node	*last = (*head_b)->prev;
 	t_node	*last_second = last->prev;
 
 	(*head_b)->next = last;

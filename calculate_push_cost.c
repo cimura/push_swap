@@ -1,6 +1,6 @@
 #include "node.h"
 
-int	calculate_push_cost(t_node *head, t_node *pos)
+int	calculate_push_cost(t_node *head, t_node *pos, int rewrite_enabled)
 {
 	int		count = 0;
 	int		lstsize = count_stack_length(head);
@@ -15,9 +15,13 @@ int	calculate_push_cost(t_node *head, t_node *pos)
 	}
 	if (count > lstsize / 2)
 	{
-		head->rotation = 1;
+		if (rewrite_enabled == 1)
+			head->rotation = 1;
+		// head->to_push = lstsize - count;
 		return (lstsize - count);
 	}
-	head->rotation = -1;
+	// head->to_push = count;
+	if (rewrite_enabled == 1)
+		head->rotation = -1;
 	return (count);
 }

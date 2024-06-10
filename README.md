@@ -1,4 +1,4 @@
-## Push Swap
+# Push Swap
 
 puseudo code
 
@@ -17,3 +17,16 @@ puseudo code
 
 	Check if the stack has more than 3 numbers
 	-> Turk Algorithm
+
+```
+cc  operations_list.c operation_to_a.c libft/libft.a basic_utils_list.c calculate_push_cost.c operation_to_b.c pseudo_test.c
+
+```
+
+#### テストケースが見れるよ
+
+```
+cc  operations_list.c operation_to_a.c libft/libft.a basic_utils_list.c calculate_push_cost.c operation_to_b.c gpt_test.c
+
+./a.out
+```
