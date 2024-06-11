@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation_to_a.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/11 00:41:15 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/11 14:13:26 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,13 @@ void rra(t_node **head_a)
 	t_node *last = (*head_a)->prev;
 	t_node *last_second = last->prev;
 
+	(*head_a)->prev = last_second;
+	last_second->next = (*head_a);
+
 	(*head_a)->next = last;
 	last->prev = (*head_a);
 	last->next = first;
-
-	(*head_a)->prev = last_second;
-	last_second->next = (*head_a);
+	first->prev = last;
 
 	ft_putstr_fd("rra\n", 1);
 }
@@ -82,7 +83,7 @@ void pa(t_node **head_a, t_node **head_b)
 // これを基にpushコストを計算できるが、構造体でどちらに回転すべきかの情報を
 // 持っておかないといけない
 
-t_node	*find_target(t_node	*head_b, t_node *pos_a)
+t_node	*find_target_pb(t_node *head_b, t_node *pos_a)
 {
 	t_node	*max_node_b;
 	t_node	*min_node_b;
@@ -110,84 +111,26 @@ t_node	*find_target(t_node	*head_b, t_node *pos_a)
 	return (target);
 }
 
-int find_cheapest_num(t_node **head_a, t_node **head_b, int indx)
+t_node	*find_target_pa(t_node *head_a, t_node *pos_b)
 {
+	t_node	*max_node_a;
+	t_node	*min_node_a;
+	t_node	*current = head_a->next;
+	t_node	*target = head_a->next;
+	int		diff = INT_MAX;
 
-	// 言い換えるとstack bからtarget_nodeを見つける作業
-	// a_nodeと一番近くてより小さいtargetを見つける (a_node > b_node)
-	// もし見つからなかったら、targetはmax_b_node (a_node < all_b_nodes)
-
-	int	forward_count = 1;
-	int back_count = 1;
-
-	t_node *current_a = go_x_steps(&(*head_a), indx);
-	t_node *current_b = (*head_b)->next;
-
-	while (1)
+	max_node_a = find_max_node(head_a);
+	min_node_a = find_min_node(head_a);
+	if (pos_b->data > max_node_a->data)
+		return (min_node_a);
+	while (current != head_a)
 	{
-		// ターゲットが最小値の場合
-		if (current_b->data <= current_b->next->data && current_a->data < current_b->data)
-			break ;
-		// max 谷を見つける
-		if (current_b->data <= current_b->next->data && current_a->data > current_b->data)
-			break ;
-		// ハマるところを見つける
-		if (current_a->data < current_b->data && current_a->data >= current_b->next->data)
-			break ;
-		current_b = current_b->next;
-		forward_count++;
-	}
-	current_b = (*head_b)->prev;
-
-	while (1)
-	{
-		// ターゲットが最小値の場合
-		if (current_b->prev->data <= current_b->data && current_a->data < current_b->data)
-			break ;
-		// max 谷を見つける
-		if (current_b->prev->data <= current_b->data && current_a->data > current_b->data)
-			break ;
-		// ハマるところを見つける
-		if (current_a->data > current_b->data && current_a->data <= current_b->prev->data)
-			break ;
-		current_b = current_b->prev;
-		back_count++;
-	}
-	printf("forward: %d\n", forward_count);
-	printf("backword: %d\n", back_count);
-	if (forward_count < back_count)
-		return (forward_count + indx);
-	return (-(back_count + indx));
-}
-
-t_node *check_stack_a(t_node **head_a, t_node **head_b)
-{
-	int i = 0;
-	// t_operations *operation;
-	// operation = malloc(sizeof(t_operations));
-	// operation->rotation = 1;
-	int	current_count;
-	int min_count = INT_MAX;
-	while (i < 4)
-	{
-		// operation->push_cost = 0;
-		current_count = find_cheapest_num(&(*head_a), &(*head_b), i);
-		if (current_count < 0)
+		if (diff > current->data - pos_b->data && current->data - pos_b->data > 0)
 		{
-			// operation->rotation = -1;
-			current_count *= -1;
+			diff = current->data - pos_b->data;
+			target = current;
 		}
-		// current_count += i;
-		printf("current_count: %d\n\n", current_count);
-		if (current_count < min_count)
-		{
-			min_count = current_count;
-			// operation->a_indx = i;
-		}
-		printf("min_count: %d\n\n", min_count);
-
-		i++;
+		current = current->next;
 	}
-	// operation->push_cost = min_count;
-	return (*head_a);
+	return (target);
 }

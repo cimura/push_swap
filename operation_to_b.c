@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation_to_b.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/11 00:56:54 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/11 14:01:31 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,24 @@ void	rb(t_node **head_b)
 
 void	rrb(t_node	**head_b)
 {
-	printf("Stack B before rrb: ");
-    print_list(*head_b);
+	// printf("Stack B before rrb: ");
+    // print_list(*head_b);
 	if ((*head_b)->next == (*head_b) || (*head_b)->prev == (*head_b))
 		return ;
 	t_node	*first = (*head_b)->next;
 	t_node	*last = (*head_b)->prev;
 	t_node	*last_second = last->prev;
 
-	(*head_b)->next = last;
-	last->prev = (*head_b);
-	last->next = first;
-
 	(*head_b)->prev = last_second;
 	last_second->next = (*head_b);
 
-	printf("Stack B after rrb: ");
-    print_list(*head_b);
+	(*head_b)->next = last;
+	last->prev = (*head_b);
+	last->next = first;
+	first->prev = last;
+
+	// printf("Stack B after rrb: ");
+    // print_list(*head_b);
 
 	ft_putstr_fd("rrb\n", 1);
 }

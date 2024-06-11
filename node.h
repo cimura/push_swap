@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/10 18:18:00 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/11 13:42:09 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ void			sa(t_node **head_a);
 void			ra(t_node **head_a);
 void			rra(t_node	**head_a);
 void			pa(t_node **head_a, t_node **head_b);
-int				find_cheapest_num(t_node **head_a, t_node **head_b, int indx);
-t_node		*check_stack_a(t_node **head_a, t_node **head_b);
+t_node	*find_target_pb(t_node *head_b, t_node *pos_a);
+t_node	*find_target_pa(t_node *head_a, t_node *pos_b);
+// int				find_cheapest_num(t_node **head_a, t_node **head_b, int indx);
+// t_node		*check_stack_a(t_node **head_a, t_node **head_b);
 
 // in operation_to_b.c
 void	sb(t_node **head_b);
@@ -65,12 +67,10 @@ t_node	*go_x_steps(t_node **head, int num);
 // in three_numbers.c
 void	handle_three_nodes(t_node *head_a);
 
-
 // basic_utils_list.c
 t_node	*find_max_node(t_node *head);
 t_node	*find_min_node(t_node *head);
 t_node	*find_last_node(t_node *head);
-t_node	*find_target(t_node	*head_b, t_node *pos_a);
 
 // in calculate_push_cost.c
 int	calculate_push_cost(t_node *head, t_node *pos, int rewrite_enabled);
