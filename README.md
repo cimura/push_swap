@@ -26,7 +26,6 @@ cc  operations_list.c operation_to_a.c libft/libft.a basic_utils_list.c calculat
 #### テストケースが見れるよ
 
 ```
-cc  operations_list.c operation_to_a.c libft/libft.a basic_utils_list.c calculate_push_cost.c operation_to_b.c gpt_test.c
+cc  operations_list.c operation_to_a.c libft/libft.a basic_utils_list.c calculate_push_cost.c operation_to_b.c gpt_test.c  three_numbers.c same_operation.c
 
-./a.out
 ```
