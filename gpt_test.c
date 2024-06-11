@@ -83,13 +83,32 @@ int main(int argc, char *argv[])
 			// 	break ;
 		}
 
+
+		while (head_a->push_cost != 0 && head_b->push_cost != 0)
+		{
+			// printf("\n\n\x1b[33m in a loop \n\n\x1b[m");
+			if (head_a->rotation == head_b->rotation && head_a->rotation == -1)
+			{
+				rrr(&head_a, &head_b);
+			}
+			else if (head_a->rotation == head_b->rotation && head_a->rotation == 1)
+			{
+				rr(&head_a, &head_b);
+			}
+			else
+				break;
+			head_a->push_cost--;
+			head_b->push_cost--;
+		}
+
+
 		int i = 0;
 		while (i < head_a->push_cost)
 		{
 			if (head_a->rotation == -1)
-				rra(&head_a);
+				rra(&head_a, 1);
 			else
-				ra(&head_a);
+				ra(&head_a, 1);
 			i++;
 		}
 		// printf("\x1b[32mRotated A %d times\n", head_a->push_cost);
@@ -99,9 +118,9 @@ int main(int argc, char *argv[])
 		while (i < head_b->push_cost)
 		{
 			if (head_b->rotation == -1)
-				rrb(&head_b);
+				rrb(&head_b, 1);
 			else
-				rb(&head_b);
+				rb(&head_b, 1);
 			i++;
 		}
 		// printf("\x1b[32mRotated B %d times\n", head_b->push_cost);
@@ -166,13 +185,34 @@ int main(int argc, char *argv[])
 			// 	break ;
 		}
 
+		// printf("\n\n\x1b[32m head_a->push cost: %d \n\n\x1b[m", head_a->push_cost);
+		// printf("\n\n\x1b[32m head_b->push cost: %d \n\n\x1b[m", head_b->push_cost);
+
+
+		while (head_a->push_cost != 0 && head_b->push_cost != 0)
+		{
+			// printf("\n\n\x1b[33m in a loop \n\n\x1b[m");
+			if (head_a->rotation == head_b->rotation && head_a->rotation == -1)
+			{
+				rrr(&head_a, &head_b);
+			}
+			else if (head_a->rotation == head_b->rotation && head_a->rotation == 1)
+			{
+				rr(&head_a, &head_b);
+			}
+			else
+				break;
+			head_a->push_cost--;
+			head_b->push_cost--;
+		}
+
 		int i = 0;
 		while (i < head_a->push_cost)
 		{
 			if (head_a->rotation == -1)
-				rra(&head_a);
+				rra(&head_a, 1);
 			else
-				ra(&head_a);
+				ra(&head_a, 1);
 			i++;
 		}
 		// printf("\x1b[32mRotated A %d times\n", head_a->push_cost);
@@ -182,9 +222,9 @@ int main(int argc, char *argv[])
 		while (i < head_b->push_cost)
 		{
 			if (head_b->rotation == -1)
-				rrb(&head_b);
+				rrb(&head_b, 1);
 			else
-				rb(&head_b);
+				rb(&head_b, 1);
 			i++;
 		}
 		// printf("\x1b[32mRotated B %d times\n", head_b->push_cost);
@@ -201,15 +241,24 @@ int main(int argc, char *argv[])
 		// printf("\n-- After pa --\n");
 	}
 
+	i = 0;
 	t_node *now = head_a->next;
-	while (head_a->prev != find_max_node(head_a))
+
+	t_node	*max_node = find_max_node(head_a);
+	head_a->push_cost = calculate_push_cost(head_a, max_node, 1);
+	if (head_a->rotation == -1)
+		head_a->push_cost--;
+	while (i < head_a->push_cost)
 	{
-		if (head_a->next->data > head_a->prev->data)
-			rra(&head_a);
-		// else if (head_a->next->data > head_a->prev->data)
-		// 	rra(&head_a);
-		// now = now->next;
+		// printf("head_a->rotation: %d\n", head_a->rotation);
+		if (head_a->rotation == -1)
+			rra(&head_a, 1);
+		else
+			ra(&head_a, 1);
+		i++;
 	}
+	if (head_a->rotation == 1)
+		ra(&head_a, 1);
 
 		// printf("-- a ---\n");
 		// print_list(head_a);

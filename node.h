@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/11 13:42:09 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:36:17 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	ft_putstr_fd(char *s, int fd);
 
 // in operation_to_a.c
 void			sa(t_node **head_a);
-void			ra(t_node **head_a);
-void			rra(t_node	**head_a);
+void			ra(t_node **head_a, int rewrite_enabled);
+void			rra(t_node	**head_a, int rewrite_enabled);
 void			pa(t_node **head_a, t_node **head_b);
 t_node	*find_target_pb(t_node *head_b, t_node *pos_a);
 t_node	*find_target_pa(t_node *head_a, t_node *pos_b);
@@ -52,8 +52,8 @@ t_node	*find_target_pa(t_node *head_a, t_node *pos_b);
 
 // in operation_to_b.c
 void	sb(t_node **head_b);
-void	rb(t_node **head_b);
-void	rrb(t_node	**head_b);
+void	rb(t_node **head_b, int rewrite_enabled);
+void	rrb(t_node	**head_b, int rewrite_enabled);
 void	pb(t_node **head_a, t_node **head_b);
 
 // in operation_list.c
@@ -74,5 +74,9 @@ t_node	*find_last_node(t_node *head);
 
 // in calculate_push_cost.c
 int	calculate_push_cost(t_node *head, t_node *pos, int rewrite_enabled);
+
+// rr, rrr
+void	rr(t_node **head_a, t_node **head_b);
+void	rrr(t_node **head_a, t_node **head_b);
 
 # endif

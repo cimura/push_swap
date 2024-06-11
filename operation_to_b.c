@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/11 14:01:31 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:35:50 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sb(t_node **head_b)
 	ft_putstr_fd("sb\n", 1);
 }
 
-void	rb(t_node **head_b)
+void	rb(t_node **head_b, int rewrite_enabled)
 {
 	if ((*head_b)->next == (*head_b) || (*head_b)->prev == (*head_b))
 		return ;
@@ -40,13 +40,12 @@ void	rb(t_node **head_b)
 	first->next = (*head_b);
 	(*head_b)->prev = first;
 
-	ft_putstr_fd("rb\n", 1);
+	if (rewrite_enabled == 1)
+		ft_putstr_fd("rb\n", 1);
 }
 
-void	rrb(t_node	**head_b)
+void	rrb(t_node	**head_b, int rewrite_enabled)
 {
-	// printf("Stack B before rrb: ");
-    // print_list(*head_b);
 	if ((*head_b)->next == (*head_b) || (*head_b)->prev == (*head_b))
 		return ;
 	t_node	*first = (*head_b)->next;
@@ -61,10 +60,8 @@ void	rrb(t_node	**head_b)
 	last->next = first;
 	first->prev = last;
 
-	// printf("Stack B after rrb: ");
-    // print_list(*head_b);
-
-	ft_putstr_fd("rrb\n", 1);
+	if (rewrite_enabled == 1)
+		ft_putstr_fd("rrb\n", 1);
 }
 
 // b 
