@@ -35,7 +35,7 @@
 
 int main(int argc, char *argv[])
 {
-	int i = 0;
+	//int i = 0;
 	// エラーハンドリング（引数の数）
 	// check_argc(argcの値によって操作を変える)
 	// int	flag = check_arg(argc, argv);
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 	// 渡すための数値作成
 
 	// stackの作成
-	argc = 0;
+	(void)argc;
 
 	t_node *head_a;
 	t_node *head_b;
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
 		rotation_push(head_a, head_b, true);
 	}
 
-	i = 0;
+	//i = 0;
 
 	t_node	*max_node = find_max_node(head_a);
 	head_a->push_cost = calculate_push_cost(head_a, max_node, true);
