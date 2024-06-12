@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation_to_b.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/11 17:35:50 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/12 10:34:24 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sb(t_node **head_b)
 	ft_putstr_fd("sb\n", 1);
 }
 
-void	rb(t_node **head_b, int rewrite_enabled)
+void	rb(t_node **head_b, bool overwrite_enabled)
 {
 	if ((*head_b)->next == (*head_b) || (*head_b)->prev == (*head_b))
 		return ;
@@ -40,11 +40,11 @@ void	rb(t_node **head_b, int rewrite_enabled)
 	first->next = (*head_b);
 	(*head_b)->prev = first;
 
-	if (rewrite_enabled == 1)
+	if (overwrite_enabled == 1)
 		ft_putstr_fd("rb\n", 1);
 }
 
-void	rrb(t_node	**head_b, int rewrite_enabled)
+void	rrb(t_node	**head_b, bool overwrite_enabled)
 {
 	if ((*head_b)->next == (*head_b) || (*head_b)->prev == (*head_b))
 		return ;
@@ -60,7 +60,7 @@ void	rrb(t_node	**head_b, int rewrite_enabled)
 	last->next = first;
 	first->prev = last;
 
-	if (rewrite_enabled == 1)
+	if (overwrite_enabled == 1)
 		ft_putstr_fd("rrb\n", 1);
 }
 

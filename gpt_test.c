@@ -19,6 +19,8 @@ int main(int argc, char *argv[])
 		add_node(&head_a, atoi(argv[i]));
 		i++;
 	}
+	pb(&head_a, &head_b);
+	pb(&head_a, &head_b);
 
 	// add_node(&head_a, 8);
 	// add_node(&head_a, 3);
@@ -56,17 +58,21 @@ int main(int argc, char *argv[])
 		current = head_a->next;
 		while (current != head_a)
 		{
-			head_a->current_push_cost = calculate_push_cost(head_a, current, 0);
+			head_a->current_push_cost = calculate_push_cost(head_a, current, false);
 			target = find_target_pb(head_b, current);
-			head_b->current_push_cost = calculate_push_cost(head_b, target, 0);
-			now_count = head_a->current_push_cost + head_b->current_push_cost;
+			head_b->current_push_cost = calculate_push_cost(head_b, target, false);
+			if ((head_a->current_push_cost != 0 && head_a->current_push_cost != 0) && head_a->is_clockwise == head_b->is_clockwise)
+				now_count = max(head_a->current_push_cost, head_b->current_push_cost);
+			else
+				now_count = head_a->current_push_cost + head_b->current_push_cost;
 
 			if (cost_mine > now_count)
 			{
+				// printf("in a loop and cost is -> %d", now_count);
 				head_a->push_data = current->data;
 				head_b->push_data = target->data;
-				head_a->push_cost = calculate_push_cost(head_a, current, 1);
-				head_b->push_cost = calculate_push_cost(head_b, target, 1);
+				head_a->push_cost = calculate_push_cost(head_a, current, true);
+				head_b->push_cost = calculate_push_cost(head_b, target, true);
 				cost_mine = now_count;
 
 				// printf("\x1b[36mCurrent node->data: %d\n", head_a->push_data);
@@ -79,8 +85,6 @@ int main(int argc, char *argv[])
 				// printf("\x1b[39m\n");
 			}
 			current = current->next;
-			// if (current == head_a)
-			// 	break ;
 		}
 
 
@@ -158,17 +162,17 @@ int main(int argc, char *argv[])
 		current = head_b->next;
 		while (current != head_b)
 		{
-			head_b->current_push_cost = calculate_push_cost(head_b, current, 0);
+			head_b->current_push_cost = calculate_push_cost(head_b, current, false);
 			target = find_target_pa(head_a, current);
-			head_a->current_push_cost = calculate_push_cost(head_a, target, 0);
+			head_a->current_push_cost = calculate_push_cost(head_a, target, false);
 			now_count = head_a->current_push_cost + head_b->current_push_cost;
 
 			if (cost_mine > now_count)
 			{
 				head_a->push_data = target->data;
 				head_b->push_data = current->data;
-				head_a->push_cost = calculate_push_cost(head_a, target, 1);
-				head_b->push_cost = calculate_push_cost(head_b, current, 1);
+				head_a->push_cost = calculate_push_cost(head_a, target, true);
+				head_b->push_cost = calculate_push_cost(head_b, current, true);
 				cost_mine = now_count;
 
 				// printf("\x1b[36mCurrent node->data: %d\n", head_b->push_data);
@@ -245,7 +249,7 @@ int main(int argc, char *argv[])
 	t_node *now = head_a->next;
 
 	t_node	*max_node = find_max_node(head_a);
-	head_a->push_cost = calculate_push_cost(head_a, max_node, 1);
+	head_a->push_cost = calculate_push_cost(head_a, max_node, true);
 	if (head_a->rotation == -1)
 		head_a->push_cost--;
 	while (i < head_a->push_cost)

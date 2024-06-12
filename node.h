@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/11 17:36:17 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/12 10:45:13 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include "libft/libft.h"
+#include <stdbool.h>
 
 typedef	struct	s_node
 {
@@ -28,6 +29,7 @@ typedef	struct	s_node
 	int				push_cost;
 	int				push_data;
 	int				rotation;
+	bool			is_clockwise;
 }				t_node;
 
 // typedef struct s_operatons
@@ -42,8 +44,8 @@ void	ft_putstr_fd(char *s, int fd);
 
 // in operation_to_a.c
 void			sa(t_node **head_a);
-void			ra(t_node **head_a, int rewrite_enabled);
-void			rra(t_node	**head_a, int rewrite_enabled);
+void			ra(t_node **head_a, bool overwrite_enabled);
+void			rra(t_node	**head_a, bool overwrite_enabled);
 void			pa(t_node **head_a, t_node **head_b);
 t_node	*find_target_pb(t_node *head_b, t_node *pos_a);
 t_node	*find_target_pa(t_node *head_a, t_node *pos_b);
@@ -52,8 +54,8 @@ t_node	*find_target_pa(t_node *head_a, t_node *pos_b);
 
 // in operation_to_b.c
 void	sb(t_node **head_b);
-void	rb(t_node **head_b, int rewrite_enabled);
-void	rrb(t_node	**head_b, int rewrite_enabled);
+void	rb(t_node **head_b, bool overwrite_enabled);
+void	rrb(t_node	**head_b, bool overwrite_enabled);
 void	pb(t_node **head_a, t_node **head_b);
 
 // in operation_list.c
@@ -71,9 +73,10 @@ void	handle_three_nodes(t_node *head_a);
 t_node	*find_max_node(t_node *head);
 t_node	*find_min_node(t_node *head);
 t_node	*find_last_node(t_node *head);
+int	max(int a, int b);
 
 // in calculate_push_cost.c
-int	calculate_push_cost(t_node *head, t_node *pos, int rewrite_enabled);
+int	calculate_push_cost(t_node *head, t_node *pos, bool overwrite_enabled);
 
 // rr, rrr
 void	rr(t_node **head_a, t_node **head_b);

@@ -46,3 +46,10 @@ t_node	*find_min_node(t_node *head)
 	}
 	return (min_node);
 }
+
+int	max(int a, int b)
+{
+	if (a >= b)
+		return (a);
+	return (b);
+}
