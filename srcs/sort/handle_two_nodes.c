@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_array.c                                       :+:      :+:    :+:   */
+/*   handle_two_nodes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:53:33 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 15:43:23 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:27:29 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
 
-int	**make_num_array(char **num_str)
-{
-	int	num_array;
+// int	**make_num_array(char **num_str)
+// {
+// 	int	num_array;
 
-	num_array = 
-}
+// 	num_array = 
+// }
 
 void	handle_two_nodes(t_node *head_a)
 {

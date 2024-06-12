@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:18 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 16:25:07 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:02:05 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,13 @@ int main(int argc, char *argv[])
 	int now_count;
 	t_node *target;
 
+	// pbするところまでやる
+
 	while (count_stack_length(head_a) != 3)
 	{
 		cost_mine = INT_MAX;
 		current = head_a->next;
+		check_best_node(&head_a, &head_b);
 		while (current != head_a)
 		{
 			head_a->current_push_cost = calculate_push_cost(head_a, current, false);
@@ -97,6 +100,9 @@ int main(int argc, char *argv[])
 	handle_three_nodes(head_a);
 
 	// pa(push back), stack b が空になるまでstack aにpushする
+
+	// t_node *current;
+	// t_node *target;
 
 	while (count_stack_length(head_b) != 0)
 	{

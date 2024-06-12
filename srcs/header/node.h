@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 16:24:01 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:52:12 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,9 @@ void	last_rotation(t_node *head_a);
 char	**tune_input(char **argv);
 
 void	setup_stack(t_node **head_a, t_node **head_b, char **num_array);
+
+// in decide_best_node.c
+void	check_best_node(t_node **head_a, t_node **head_b);
+int	return_best_count(t_node **head_a, t_node **head_b, t_node **current, t_node **target);
 
 # endif
