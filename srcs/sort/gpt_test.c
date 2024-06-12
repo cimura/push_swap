@@ -1,4 +1,4 @@
-#include "node.h"
+#include "../header/node.h"
 
 // first-->  5 2 7 1 6 3 9 4 8
 
@@ -10,6 +10,7 @@
 
 int main(int argc, char *argv[])
 {
+	argc = 0;
 	t_node *head_a = initialize_stack();
 	t_node *head_b = initialize_stack();
 
@@ -47,7 +48,6 @@ int main(int argc, char *argv[])
 	t_node *current;
 	int cost_mine;
 	int now_count;
-	int rewrite_enabled = 0;
 	t_node *target;
 
 	// length_stack a == length_stack b -> boooom!!!!
@@ -246,7 +246,6 @@ int main(int argc, char *argv[])
 	}
 
 	i = 0;
-	t_node *now = head_a->next;
 
 	t_node	*max_node = find_max_node(head_a);
 	head_a->push_cost = calculate_push_cost(head_a, max_node, true);

@@ -6,11 +6,11 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:13 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/09 15:35:09 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/12 13:12:07 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "node.h"
+#include "../header/node.h"
 
 t_node	*create_node(int data)
 {

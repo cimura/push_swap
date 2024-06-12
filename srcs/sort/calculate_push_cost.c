@@ -1,4 +1,4 @@
-#include "node.h"
+#include "../header/node.h"
 
 int	calculate_push_cost(t_node *head, t_node *pos, bool overwrite_enabled)
 {

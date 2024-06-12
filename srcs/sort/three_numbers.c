@@ -1,5 +1,5 @@
-#include "node.h"
-#include "libft/libft.h"
+#include "../header/node.h"
+#include "../../libft/libft.h"
 
 void handle_three_nodes(t_node *head_a)
 {

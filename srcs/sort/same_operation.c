@@ -1,4 +1,4 @@
-#include "node.h"
+#include "../header/node.h"
 
 void	rr(t_node **head_a, t_node **head_b)
 {
@@ -12,5 +12,4 @@ void	rrr(t_node **head_a, t_node **head_b)
 	rra(head_a, 0);
 	rrb(head_b, 0);
 	ft_putstr_fd("rrr\n", 1);
-
 }

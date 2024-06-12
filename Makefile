@@ -1,21 +1,27 @@
-NAME		=	push_swap.a
-LIBFT_DIR	=	./libft
+NAME		=	push_swap
+LIBFT_DIR	=	libft/
+SRCS_DIR	=	src/
+SRCS		=	srcs/sort/basic_utils_list.c \
+				srcs/sort/calculate_push_cost.c \
+				srcs/sort/gpt_test.c \
+				srcs/sort/operation_to_a.c \
+				srcs/sort/operation_to_b.c \
+				srcs/sort/operations_list.c \
+				srcs/sort/same_operation.c \
+				srcs/sort/three_numbers.c
+
 LIBFT		=	$(LIBFT_DIR)/libft.a
-SRCS_DIR	=	./src
-SRCS		=	$(wildcard $(SRCS_DIR)/*.c)
-OBJS		=	$(patsubst $(SRCS:%.c=%.o),$(SRCS_DIR)/%.o,$(SRCS))
-CC			=	gcc
+OBJS		=	$(SRCS:%.c=%.o)
 CFLAGS		=	-Wall -Wextra -Werror
+
+$(NAME): $(OBJS) $(LIBFT)
+		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
 $(LIBFT):
 		$(MAKE) -C $(LIBFT_DIR)
-
-$(NAME): $(OBJS) $(LIBFT)
-		ar -x $(LIBFT)
-		ar rcs $@ $(OBJS) *.o
 	
 run:
-		$(CC) $(CFLAGS) main.c -L. -lpush_swap -L(LIBFT_DIR) -lft -o push_swap
+		$(CC) $(CFLAGS) main.c -L. -lsort -L(LIBFT_DIR) -lft -o sort
 
 all:	$(NAME)
 
