@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
 		shuffle(array, num);
 
 		// シャッフルされた数値を文字列として連結
-		char command[10000] = "./a.out";
+		char command[10000] = "./push_swap";
 		for (int i = 0; i < num; i++) {
 		    char buffer[10];
 		    sprintf(buffer, " %d", array[i]);

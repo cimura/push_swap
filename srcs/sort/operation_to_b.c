@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 13:12:04 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:48:15 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,16 @@ void	sb(t_node **head_b)
 
 void	rb(t_node **head_b, bool overwrite_enabled)
 {
+	t_node	*first;
+	t_node	*second;
+	t_node	*last;
+
 	if ((*head_b)->next == (*head_b) || (*head_b)->prev == (*head_b))
 		return ;
-	t_node	*first = (*head_b)->next;
-	t_node	*second = first->next;
-	t_node	*last = (*head_b)->prev;
 
+	first = (*head_b)->next;
+	second = first->next;
+	last = (*head_b)->prev;
 
 	(*head_b)->next = second;
 	second->prev = (*head_b);
@@ -46,11 +50,16 @@ void	rb(t_node **head_b, bool overwrite_enabled)
 
 void	rrb(t_node	**head_b, bool overwrite_enabled)
 {
+	t_node	*first;
+	t_node	*last;
+	t_node	*last_second;
+
 	if ((*head_b)->next == (*head_b) || (*head_b)->prev == (*head_b))
 		return ;
-	t_node	*first = (*head_b)->next;
-	t_node	*last = (*head_b)->prev;
-	t_node	*last_second = last->prev;
+
+	first = (*head_b)->next;
+	last = (*head_b)->prev;
+	last_second = last->prev;
 
 	(*head_b)->prev = last_second;
 	last_second->next = (*head_b);
@@ -70,10 +79,13 @@ void	rrb(t_node	**head_b, bool overwrite_enabled)
 
 void	pb(t_node **head_a, t_node **head_b)
 {
-	t_node	*a_first = (*head_a)->next;
-	t_node	*a_second = a_first->next;
+	t_node	*a_first;
+	t_node	*b_first;
+	t_node	*a_second;
 
-	t_node	*b_first = (*head_b)->next;
+	a_first = (*head_a)->next;
+	b_first = (*head_b)->next;
+	a_second = a_first->next;
 
 	(*head_a)->next = a_second;
 	a_second->prev = (*head_a);

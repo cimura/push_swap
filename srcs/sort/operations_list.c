@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:13 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 13:12:07 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:49:52 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ t_node	*create_node(int data)
 	return (new_node);
 }
 
-t_node	*initialize_stack()
+t_node	*initialize_stack(void)
 {
-	t_node	*head = create_node(0);
+	t_node	*head;
+
+	head = create_node(0);
 	head->next = head;
 	head->prev = head;
 	return (head);
@@ -33,8 +35,11 @@ t_node	*initialize_stack()
 
 void	add_node(t_node **head, int data)
 {
-	t_node	*new_node = create_node(data);
-	t_node	*last = (*head)->prev;
+	t_node	*new_node;
+	t_node	*last;
+
+	new_node = create_node(data);
+	last = (*head)->prev;
 
 	new_node->next = (*head);
 	new_node->prev = last;
@@ -44,7 +49,9 @@ void	add_node(t_node **head, int data)
 
 void	print_list(t_node *head)
 {
-	t_node	*current = head->next;
+	t_node	*current;
+
+	current = head->next;
 	while (current != head)
 	{
 		printf("%d ", current->data);
@@ -55,8 +62,11 @@ void	print_list(t_node *head)
 
 t_node	*go_x_steps(t_node **head, int num)
 {
-	t_node *current = (*head)->next;
-	int i = 0;
+	int		i;
+	t_node	*current;
+
+	i = 0;
+	current = (*head)->next;
 	while (current != NULL && i < num)
 	{
 		current = current->next;

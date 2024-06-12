@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   same_operation.c                                   :+:      :+:    :+:   */
+/*   make_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 14:50:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 14:50:06 by sshimura         ###   ########.fr       */
+/*   Created: 2024/06/12 14:53:33 by sshimura          #+#    #+#             */
+/*   Updated: 2024/06/12 14:55:06 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
 
-void	rr(t_node **head_a, t_node **head_b)
+int	**make_num_array(char **num_str)
 {
-	ra(head_a, 0);
-	rb(head_b, 0);
-	ft_putstr_fd("rr\n", 1);
-}
+	int	num_array;
 
-void	rrr(t_node **head_a, t_node **head_b)
-{
-	rra(head_a, 0);
-	rrb(head_b, 0);
-	ft_putstr_fd("rrr\n", 1);
+	num_array = 
 }
