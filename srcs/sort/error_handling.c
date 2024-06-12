@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:29 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 14:57:15 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:06:44 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // 何も入力がない場合（実行ファイルのみ）は何も表示しない
 // エラーの場合は"標準エラー出力" に "Error\n"と出力する
 
-char	**tune_input(char *argv)
+char	**tune_input(char **argv)
 {
 	char	**chr_num_array;
 
@@ -29,6 +29,7 @@ bool	check_num(int num)
 {
 	if (num > INT_MAX || num < INT_MIN)
 		return (false);
+	return (true);
 }
 
 bool	is_num(char c)
@@ -52,14 +53,14 @@ bool	check_string_is_num(char *str)
 	return (true);
 }
 
-int	check_arg(int argc, char *argv[])
-{
-	print_error(check_argc(argc, argv));
-	if (argc == 2)
+// int	check_arg(int argc, char *argv[])
+// {
+// 	print_error(check_argc(argc, argv));
+// 	if (argc == 2)
 
-}
+// }
 
-int	check_argc(int argc, char *argv[])
+int	check_argc(int argc)
 {
 	if (argc == 1)
 		return (1);

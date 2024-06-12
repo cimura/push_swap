@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 13:11:29 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:24:01 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,9 @@ typedef	struct	s_node
 	bool			is_clockwise;
 }				t_node;
 
-// typedef struct s_operatons
-// {
-// 	// int	b_to_top;
-// 	int	push_cost;
-// 	int rotation;
-// }				t_operations;
-
 // in libft/
 void	ft_putstr_fd(char *s, int fd);
+char	**ft_split(char const *s, char c);
 
 // in operation_to_a.c
 void			sa(t_node **head_a);
@@ -72,7 +66,7 @@ void	handle_three_nodes(t_node *head_a);
 // basic_utils_list.c
 t_node	*find_max_node(t_node *head);
 t_node	*find_min_node(t_node *head);
-t_node	*find_last_node(t_node *head);
+// t_node	*find_last_node(t_node *head);
 int	max(int a, int b);
 
 // in calculate_push_cost.c
@@ -81,5 +75,17 @@ int	calculate_push_cost(t_node *head, t_node *pos, bool overwrite_enabled);
 // rr, rrr
 void	rr(t_node **head_a, t_node **head_b);
 void	rrr(t_node **head_a, t_node **head_b);
+
+// in rotation.c
+void	perform_ab_rotations(t_node *head_a, t_node *head_b);
+void	perform_a_rotations(t_node *head_a);
+void	perform_b_rotations(t_node *head_b);
+void	rotation_push(t_node *head_a, t_node *head_b, bool is_push_a);
+void	last_rotation(t_node *head_a);
+
+// in error_handling.c
+char	**tune_input(char **argv);
+
+void	setup_stack(t_node **head_a, t_node **head_b, char **num_array);
 
 # endif
