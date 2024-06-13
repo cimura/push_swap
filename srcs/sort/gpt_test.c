@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:18 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 14:06:43 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:45:22 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,17 @@ int main(int argc, char *argv[])
 
 	// 渡すための数値作成
 
-	char	**num_array = NULL;
+	// char	**num_array = NULL;
 
 	if (argc == 1)
 		return (0);
 	else if (argc == 2)
-		num_array = ft_split((const char *)argv[1], ' ');
+		argv = ft_split((const char *)argv[1], ' ');
 	else
-		num_array = &argv[1];
-	
-	bool check = check_duplicate_num(num_array);
+		argv = &argv[1];
+
+	// +2 2, この場合の重複を修正しないといけない
+	bool check = check_duplicate_num(argv);
 	if (check == false)
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -60,10 +61,10 @@ int main(int argc, char *argv[])
 	}
 
 	int i = 0;
-	while (num_array[i] != NULL)
+	while (argv[i] != NULL)
 	{
-		long long num = ft_atol(num_array[i]);
-		if (!check_string_is_num(num_array[i]) || !check_num(num))
+		long long num = ft_atol(argv[i]);
+		if (!check_string_is_num(argv[i]) || !check_num(num))
 		{
 			ft_putstr_fd("Error\n", 2);
 			return (1);
@@ -75,16 +76,18 @@ int main(int argc, char *argv[])
 	t_node *head_b;
 
 	// char	**num_array = tune_input(argv);
-	setup_stack(&head_a, &head_b, num_array);
+	setup_stack(&head_a, &head_b, argv);
 
 	if (count_stack_length(head_a) == 0)
 		return (0);
-	// if (count_stack_length(head_a) == 1)
-	// 	return (0);
-	// else if (count_stack_length(head_a) == 2)
-	// 	return (handle_two_nodes(head_a));
-	// else if (count_stack_length(head_a) == 3)
-	// 	return (handle_three_nodes(head_a));
+	if (count_stack_length(head_a) == 1)
+		return (0);
+	else if (count_stack_length(head_a) == 2)
+		return (handle_two_nodes(&head_a));
+	else if (count_stack_length(head_a) == 3)
+		return (handle_three_nodes(&head_a));
+	else if (count_stack_length(head_a) == 4)
+		return (handle_four_nodes(&head_a, &head_b));
 	// else
 		// sort_stack();
 	pb(&head_a, &head_b);
@@ -97,7 +100,7 @@ int main(int argc, char *argv[])
 		decide_push_cost_toa(&head_a, &head_b);
 		rotation_push(head_a, head_b, false);
 	}
-	handle_three_nodes(head_a);
+	handle_three_nodes(&head_a);
 
 	// pa(push back), stack b が空になるまでstack aにpushする
 
@@ -111,6 +114,6 @@ int main(int argc, char *argv[])
 	head_a->push_cost = calculate_push_cost(head_a, max_node, true);
 	last_rotation(head_a);
 
-	// print_list(head_a);
+	print_list(head_a);
 	return 0;
 }

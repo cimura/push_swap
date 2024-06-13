@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:29 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 14:05:10 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:22:45 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	check_string_is_num(char *str)
 	int	i;
 
 	i = 0;
-	if (str[0] == '-')
+	if (str[0] == '-' || str[0] == '+')
 		i++;
 	while (str[i] != '\0')
 	{
@@ -102,3 +102,19 @@ bool	check_duplicate_num(char **num_array)
 	}
 	return (true);
 }
+
+// bool check_duplicate_num(long long *num_array, int size)
+// {
+//     bool seen[INT_MAX] = {false}; // MAX_NUM_VALUEは十分大きな値
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         long long num = num_array[i];
+//         if (seen[num])
+//             return false; // 重複を検出
+
+//         seen[num] = true;
+//     }
+
+//     return true; // 重複なし
+// }

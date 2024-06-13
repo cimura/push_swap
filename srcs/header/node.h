@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 14:05:27 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:43:19 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,12 @@ void	print_list(t_node *head);
 int		count_stack_length(t_node *head);
 t_node	*go_x_steps(t_node **head, int num);
 
+// in handle_two_nodes.c
+int	handle_two_nodes(t_node **head_a);
+int	handle_four_nodes(t_node **head_a, t_node **head_b);
+
 // in three_numbers.c
-void	handle_three_nodes(t_node *head_a);
+int	handle_three_nodes(t_node **head_a);
 
 // basic_utils_list.c
 t_node	*find_max_node(t_node *head);
