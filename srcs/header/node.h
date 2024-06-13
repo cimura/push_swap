@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 17:24:02 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:14:21 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ typedef	struct	s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 	int				data;
-	int				current_push_cost;
+	int				now_cost;
 	int				push_cost;
 	int				push_data;
 	int				rotation;
-	bool			is_clockwise;
+	bool			is_clock;
 }				t_node;
 
 // in libft/

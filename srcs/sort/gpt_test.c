@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:18 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 17:23:34 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:18:26 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ int main(int argc, char *argv[])
 		current = head_b->next;
 		while (current != head_b)
 		{
-			head_b->current_push_cost = calculate_push_cost(head_b, current, false);
+			head_b->now_cost = calculate_push_cost(head_b, current, false);
 			target = find_target_pa(head_a, current);
-			head_a->current_push_cost = calculate_push_cost(head_a, target, false);
-			now_count = head_a->current_push_cost + head_b->current_push_cost;
+			head_a->now_cost = calculate_push_cost(head_a, target, false);
+			now_count = head_a->now_cost + head_b->now_cost;
 
 			if (cost_mine > now_count)
 			{

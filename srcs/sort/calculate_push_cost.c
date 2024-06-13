@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:41 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 14:50:44 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:17:45 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	calculate_push_cost(t_node *head, t_node *pos, bool overwrite_enabled)
 	}
 	if (count > lstsize / 2)
 	{
-		head->is_clockwise = true;
+		head->is_clock = true;
 		if (overwrite_enabled == 1)
 			head->rotation = 1;
 		return (lstsize - count);
 	}
 	if (overwrite_enabled == 1)
 		head->rotation = -1;
-	head->is_clockwise = false;
+	head->is_clock = false;
 	return (count);
 }
