@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 14:43:19 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:51:24 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,8 @@ void	print_list(t_node *head);
 int		count_stack_length(t_node *head);
 t_node	*go_x_steps(t_node **head, int num);
 
-// in handle_two_nodes.c
+// in sort_small_stacks.c
 int	handle_two_nodes(t_node **head_a);
-int	handle_four_nodes(t_node **head_a, t_node **head_b);
-
-// in three_numbers.c
 int	handle_three_nodes(t_node **head_a);
 
 // basic_utils_list.c
@@ -89,17 +86,26 @@ void	rotation_push(t_node *head_a, t_node *head_b, bool is_push_a);
 void	last_rotation(t_node *head_a);
 
 // in error_handling.c
-bool	is_num(char c);
 bool	check_string_is_num(char *str);
 bool	check_num(long long num);
-long long	ft_atol(const char *str);
 bool	check_duplicate_num(char **num_array);
+int	is_sign(char c);
+int	error_handling(char **argv);
+
+// in util_error_handling.c
+bool	is_num(char c);
 int	count_num_array(char **num_array);
+long long	ft_atol(const char *str);
+
 
 void	setup_stack(t_node **head_a, t_node **head_b, char **num_array);
 
 // in decide_best_node.c
 void	decide_push_cost_toa(t_node **head_a, t_node **head_b);
 void	decide_push_cost_tob(t_node **head_a, t_node **head_b);
+
+// in push_swap.c
+void	push_swap(t_node **head_a, t_node **head_b);
+void	final_rotation(t_node **head_a);
 
 # endif

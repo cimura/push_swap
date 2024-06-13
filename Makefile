@@ -8,12 +8,13 @@ SRCS		=	srcs/sort/basic_utils_list.c \
 				srcs/sort/operation_to_b.c \
 				srcs/sort/operations_list.c \
 				srcs/sort/same_operation.c \
-				srcs/sort/three_numbers.c \
-				srcs/sort/handle_two_nodes.c \
+				srcs/sort/sort_small_stacks.c \
 				srcs/sort/rotation.c \
 				srcs/sort/error_handling.c \
+				srcs/sort/util_error_handling.c \
 				srcs/sort/setup_stack.c \
 				srcs/sort/decide_best_node.c \
+				srcs/sort/push_swap.c \
 
 LIBFT		=	$(LIBFT_DIR)/libft.a
 OBJS		=	$(SRCS:%.c=%.o)

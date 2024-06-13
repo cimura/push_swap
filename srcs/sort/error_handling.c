@@ -6,11 +6,35 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:29 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 14:22:45 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:43:06 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
+
+int	error_handling(char **argv)
+{
+	int			i;
+	long long	num;
+
+	i = 0;
+	if (check_duplicate_num(argv) == false)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (1);
+	}
+	while (argv[i] != NULL)
+	{
+		num = ft_atol(argv[i]);
+		if (!check_string_is_num(argv[i]) || !check_num(num))
+		{
+			ft_putstr_fd("Error\n", 2);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
 
 bool	check_num(long long num)
 {
@@ -18,16 +42,6 @@ bool	check_num(long long num)
 		return (false);
 	return (true);
 }
-
-bool	is_num(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (true);
-	return (false);
-}
-
-// long longを超えるような値に対処する必要があるのか。
-// マイナスの処理がめんどくさい
 
 bool	check_string_is_num(char *str)
 {
@@ -45,44 +59,12 @@ bool	check_string_is_num(char *str)
 	return (true);
 }
 
-long long	ft_atol(const char *str)
-{
-	int		i;
-	int		sign;
-	long	result;
-
-	i = 0;
-	sign = decide_sign(str, &i);
-	result = 0;
-	while (str[i] <= '9' && str[i] >= '0')
-	{
-		if (result > (LONG_MAX - (str[i] - '0')) / 10)
-		{
-			if (sign > 0)
-				return (LONG_MAX);
-			else
-				return (LONG_MIN);
-		}
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
-}
-
-int	count_num_array(char **num_array)
-{
-	int	count;
-
-	count = 0;
-	while (num_array[count] != NULL)
-		count++;
-	return (count);
-}
-
 bool	check_duplicate_num(char **num_array)
 {
 	int	i;
 	int	j;
+	int	sign1;
+	int	sign2;
 	int	size;
 
 	i = 0;
@@ -93,28 +75,14 @@ bool	check_duplicate_num(char **num_array)
 		j = i + 1;
 		while (j < size)
 		{
-			if (ft_strncmp(num_array[i], num_array[j], INT_MAX) == 0)
+			sign1 = is_sign(num_array[i][0]);
+			sign2 = is_sign(num_array[j][0]);
+			if (ft_strncmp(&num_array[i][sign1], &num_array[j][sign2]
+												, INT_MAX) == 0)
 				return (false);
 			j++;
-
 		}
 		i++;
 	}
 	return (true);
 }
-
-// bool check_duplicate_num(long long *num_array, int size)
-// {
-//     bool seen[INT_MAX] = {false}; // MAX_NUM_VALUEは十分大きな値
-
-//     for (int i = 0; i < size; i++)
-//     {
-//         long long num = num_array[i];
-//         if (seen[num])
-//             return false; // 重複を検出
-
-//         seen[num] = true;
-//     }
-
-//     return true; // 重複なし
-// }
