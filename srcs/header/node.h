@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 12:14:21 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:05:27 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ typedef	struct	s_node
 // in libft/
 void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
-
+int	whitespace(char check_chr);
+int	decide_sign(const char *str, int *indx);
 // in operation_to_a.c
 void			sa(t_node **head_a);
 void			ra(t_node **head_a, bool overwrite_enabled);
@@ -84,12 +85,17 @@ void	rotation_push(t_node *head_a, t_node *head_b, bool is_push_a);
 void	last_rotation(t_node *head_a);
 
 // in error_handling.c
-char	**tune_input(char **argv);
+bool	is_num(char c);
+bool	check_string_is_num(char *str);
+bool	check_num(long long num);
+long long	ft_atol(const char *str);
+bool	check_duplicate_num(char **num_array);
+int	count_num_array(char **num_array);
 
 void	setup_stack(t_node **head_a, t_node **head_b, char **num_array);
 
 // in decide_best_node.c
-void	decide_push_cost(t_node **head_a, t_node **head_b);
-void	update_push_cost(t_node **head_a, t_node **head_b, t_node **current, t_node **target);
+void	decide_push_cost_toa(t_node **head_a, t_node **head_b);
+void	decide_push_cost_tob(t_node **head_a, t_node **head_b);
 
 # endif

@@ -6,26 +6,13 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:29 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 16:06:44 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:05:10 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
 
-// 何も入力がない場合（実行ファイルのみ）は何も表示しない
-// エラーの場合は"標準エラー出力" に "Error\n"と出力する
-
-char	**tune_input(char **argv)
-{
-	char	**chr_num_array;
-
-	chr_num_array = ft_split(argv[1], ' ');
-	return (chr_num_array);
-}
-
-// 42\0 11\0 9\0 NULL
-
-bool	check_num(int num)
+bool	check_num(long long num)
 {
 	if (num > INT_MAX || num < INT_MIN)
 		return (false);
@@ -39,11 +26,16 @@ bool	is_num(char c)
 	return (false);
 }
 
+// long longを超えるような値に対処する必要があるのか。
+// マイナスの処理がめんどくさい
+
 bool	check_string_is_num(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (str[0] == '-')
+		i++;
 	while (str[i] != '\0')
 	{
 		if (!is_num(str[i]))
@@ -53,34 +45,60 @@ bool	check_string_is_num(char *str)
 	return (true);
 }
 
-// int	check_arg(int argc, char *argv[])
-// {
-// 	print_error(check_argc(argc, argv));
-// 	if (argc == 2)
-
-// }
-
-int	check_argc(int argc)
+long long	ft_atol(const char *str)
 {
-	if (argc == 1)
-		return (1);
-	return (0);
+	int		i;
+	int		sign;
+	long	result;
+
+	i = 0;
+	sign = decide_sign(str, &i);
+	result = 0;
+	while (str[i] <= '9' && str[i] >= '0')
+	{
+		if (result > (LONG_MAX - (str[i] - '0')) / 10)
+		{
+			if (sign > 0)
+				return (LONG_MAX);
+			else
+				return (LONG_MIN);
+		}
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
 
-void	print_error(int flag)
+int	count_num_array(char **num_array)
 {
-	if (flag == 1)
-		return ;
-	else if (flag == -1)
-		ft_putstr_fd("Error\n", 2);
+	int	count;
+
+	count = 0;
+	while (num_array[count] != NULL)
+		count++;
+	return (count);
 }
 
-// "12  42 34 12"
+bool	check_duplicate_num(char **num_array)
+{
+	int	i;
+	int	j;
+	int	size;
 
-// "
-// 12\0
-// 42\0
-// 34\0
-// 12\0
-// NULL
-// "
+	i = 0;
+	size = count_num_array(num_array);
+
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (ft_strncmp(num_array[i], num_array[j], INT_MAX) == 0)
+				return (false);
+			j++;
+
+		}
+		i++;
+	}
+	return (true);
+}

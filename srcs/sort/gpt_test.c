@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:18 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 12:18:26 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:06:43 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,42 @@ int main(int argc, char *argv[])
 
 	// 渡すための数値作成
 
-	// stackの作成
-	(void)argc;
+	char	**num_array = NULL;
+
+	if (argc == 1)
+		return (0);
+	else if (argc == 2)
+		num_array = ft_split((const char *)argv[1], ' ');
+	else
+		num_array = &argv[1];
+	
+	bool check = check_duplicate_num(num_array);
+	if (check == false)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (1);
+	}
+
+	int i = 0;
+	while (num_array[i] != NULL)
+	{
+		long long num = ft_atol(num_array[i]);
+		if (!check_string_is_num(num_array[i]) || !check_num(num))
+		{
+			ft_putstr_fd("Error\n", 2);
+			return (1);
+		}
+		i++;
+	}
 
 	t_node *head_a;
 	t_node *head_b;
 
 	// char	**num_array = tune_input(argv);
-	setup_stack(&head_a, &head_b, argv);
+	setup_stack(&head_a, &head_b, num_array);
 
+	if (count_stack_length(head_a) == 0)
+		return (0);
 	// if (count_stack_length(head_a) == 1)
 	// 	return (0);
 	// else if (count_stack_length(head_a) == 2)
@@ -63,50 +90,22 @@ int main(int argc, char *argv[])
 	pb(&head_a, &head_b);
 	pb(&head_a, &head_b);
 
-	// t_node *current;
-	int cost_mine;
-	int now_count;
-	// t_node *target;
-
 	// pbするところまでやる
 
 	while (count_stack_length(head_a) != 3)
 	{
-		decide_push_cost(&head_a, &head_b);
+		decide_push_cost_toa(&head_a, &head_b);
 		rotation_push(head_a, head_b, false);
 	}
 	handle_three_nodes(head_a);
 
 	// pa(push back), stack b が空になるまでstack aにpushする
 
-	t_node *current;
-	t_node *target;
-
 	while (count_stack_length(head_b) != 0)
 	{
-		cost_mine = INT_MAX;
-		current = head_b->next;
-		while (current != head_b)
-		{
-			head_b->now_cost = calculate_push_cost(head_b, current, false);
-			target = find_target_pa(head_a, current);
-			head_a->now_cost = calculate_push_cost(head_a, target, false);
-			now_count = head_a->now_cost + head_b->now_cost;
-
-			if (cost_mine > now_count)
-			{
-				head_a->push_data = target->data;
-				head_b->push_data = current->data;
-				head_a->push_cost = calculate_push_cost(head_a, target, true);
-				head_b->push_cost = calculate_push_cost(head_b, current, true);
-				cost_mine = now_count;
-			}
-			current = current->next;
-		}
+		decide_push_cost_tob(&head_a, &head_b);
 		rotation_push(head_a, head_b, true);
 	}
-
-	//i = 0;
 
 	t_node	*max_node = find_max_node(head_a);
 	head_a->push_cost = calculate_push_cost(head_a, max_node, true);

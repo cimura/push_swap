@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:52:45 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 16:16:19 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:49:13 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	setup_stack(t_node **head_a, t_node **head_b, char **argv)
 
 	*head_a = initialize_stack();
 	*head_b = initialize_stack();
-	i = 1;
+	i = 0;
 	while (argv[i] != NULL)
 	{
 		add_node(head_a, ft_atoi(argv[i]));
