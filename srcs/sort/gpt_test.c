@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gpt_test.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:18 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 15:54:13 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:04:05 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int	main(int argc, char *argv[])
 
 	if (argc == 1)
 		return (0);
-	else if (argc == 2)
-		argv = ft_split((const char *)argv[1], ' ');
-	else
-		argv = &argv[1];
+	else if (argc >= 2)
+		argv = ft_double_strjoin(&argv[1]);
+
 	if (error_handling(argv) == 1)
 		return (1);
 	setup_stack(&head_a, &head_b, argv);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   node.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 15:51:24 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 10:58:27 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	NODE_H
+#ifndef NODE_H
 # define NODE_H
 
 #include <stdio.h>
@@ -107,5 +107,10 @@ void	decide_push_cost_tob(t_node **head_a, t_node **head_b);
 // in push_swap.c
 void	push_swap(t_node **head_a, t_node **head_b);
 void	final_rotation(t_node **head_a);
+
+// in to_substring.c
+int	count_double_ptr(char **argv);
+int	count_dwords(char  **s, char c);
+char	**ft_double_strjoin(char **argv);
 
 # endif

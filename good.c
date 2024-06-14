@@ -1,30 +1,58 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include "libft/libft.h"
 
-bool check_duplicate_num(char **num_array, int size)
+// int count_double_ptr(char **argv)
+// {
+//     int count;
+
+//     count = 0;
+//     while (argv[count] != NULL)
+//         count++;
+    
+// }
+
+char    **ft_double_strjoin(char **argv)
 {
-
-    for (int i = 0; i < size; i++)
+    char    **substring = malloc(sizeof(char *) * 5);
+    char    **joined = malloc(sizeof(char *) * 7);
+    int     i = 0;
+    int     indx = 0;
+    int     j;
+    while (argv[i] != NULL)
     {
-        for (int j = i + 1; j < size; j++)
+        j = 0;
+        substring = ft_split(argv[i], ' ');
+        while (substring[j] != NULL)
         {
-            if (strcmp(num_array[i], num_array[j]) == 0)
-            {
-                return false; // 重複を検出
-            }
+            joined[indx] = substring[j];
+            j++;
+            indx++;
+            // printf("joined: %s\n", joined[indx]);
         }
+        i++;
     }
-    return true; // 重複なし
+    joined[indx] = NULL;
+    return (joined);
 }
 
-int main(void)
+// int argc, char *argv
+int main()
 {
-    char *str[] = {"32", "2", "41", "2", NULL};
-    bool judge = check_duplicate_num(str, 4); // サイズを渡す
-    if (judge == true)
-        printf("\x1b[32mSuccess!\n");
-    else
-        printf("\x1b[34mFail...\n");
+    char *str1[] = {"1234  9  72", "2", "41", "50", NULL};
+
+    char    **result = ft_double_strjoin(str1);
+    // bool judge = check_duplicate_num(str, 4); // サイズを渡す
+    // if (judge == true)
+    //     printf("\x1b[32mSuccess!\n");
+    // else
+    //     printf("\x1b[34mFail...\n");
+    int i = 0;
+    while (result[i] != NULL)
+    {
+        printf("result: %s\n", result[i]);
+        i++;
+    }
     return 0;
 }
