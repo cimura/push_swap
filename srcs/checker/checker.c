@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:32:05 by cimy              #+#    #+#             */
-/*   Updated: 2024/06/14 16:02:31 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 17:26:59 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	main(int argc, char *argv[])
 
 	if (is_sorted(head_a) == false)
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("KO\n", 2);
 		return (1);
 	}
 	ft_putstr_fd("OK\n", 1);
