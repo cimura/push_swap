@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_specific_nodes.c                            :+:      :+:    :+:   */
+/*   sort_small_stacks.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:53:33 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 15:17:13 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:25:28 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	handle_two_nodes(t_node **head_a)
 	y = x->next;
 
 	if (x->data > y->data)
-		sa(head_a);
+		sa(head_a, true);
 	return (0);
 }
 
@@ -33,11 +33,11 @@ int	handle_three_nodes(t_node **head_a)
 	current = (*head_a)->next;
 	max_node = find_max_node((*head_a));
 	if (max_node == current)
-		ra(head_a, 1);
+		ra(head_a, true);
 	else if (max_node == (*head_a)->next->next)
-		rra(head_a, 1);
+		rra(head_a, true);
 	current = (*head_a)->next;
 	if (current->data > current->next->data)
-		sa(head_a);
+		sa(head_a, true);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:36:42 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 15:52:01 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:23:21 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push_swap(t_node **head_a, t_node **head_b)
 {
-	pb(head_a, head_b);
+	pb(head_a, head_b, true);
 	// pbするところまでやる
 	while (count_stack_length(*head_a) != 3)
 	{

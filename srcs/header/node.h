@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 12:13:46 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 15:56:41 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include "../../libft/libft.h"
+// #include "../../get_next_line/get_next_line.h"
 #include <stdbool.h>
 
 typedef	struct	s_node
@@ -37,21 +38,25 @@ void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
 int	whitespace(char check_chr);
 int	decide_sign(const char *str, int *indx);
+
+// in gnl
+char	*get_next_line(int fd);
+
 // in operation_to_a.c
-void			sa(t_node **head_a);
-void			ra(t_node **head_a, bool overwrite_enabled);
-void			rra(t_node	**head_a, bool overwrite_enabled);
-void			pa(t_node **head_a, t_node **head_b);
+void			sa(t_node **head_a, bool print);
+void			ra(t_node **head_a, bool print);
+void			rra(t_node	**head_a, bool print);
+void			pa(t_node **head_a, t_node **head_b, bool print);
 t_node	*find_target_pb(t_node *head_b, t_node *pos_a);
 t_node	*find_target_pa(t_node *head_a, t_node *pos_b);
 // int				find_cheapest_num(t_node **head_a, t_node **head_b, int indx);
 // t_node		*check_stack_a(t_node **head_a, t_node **head_b);
 
 // in operation_to_b.c
-void	sb(t_node **head_b);
-void	rb(t_node **head_b, bool overwrite_enabled);
-void	rrb(t_node	**head_b, bool overwrite_enabled);
-void	pb(t_node **head_a, t_node **head_b);
+void	sb(t_node **head_b, bool print);
+void	rb(t_node **head_b, bool print);
+void	rrb(t_node	**head_b, bool print);
+void	pb(t_node **head_a, t_node **head_b, bool print);
 
 // in operation_list.c
 t_node	*create_node(int data);
@@ -75,8 +80,8 @@ int	max(int a, int b);
 int	calculate_push_cost(t_node *head, t_node *pos, bool overwrite_enabled);
 
 // rr, rrr
-void	rr(t_node **head_a, t_node **head_b);
-void	rrr(t_node **head_a, t_node **head_b);
+void	rr(t_node **head_a, t_node **head_b, bool print);
+void	rrr(t_node **head_a, t_node **head_b, bool print);
 
 // in rotation.c
 void	perform_ab_rotations(t_node *head_a, t_node *head_b);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   operation_to_b.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 14:48:15 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:25:02 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
 
-void	sb(t_node **head_b)
+void	sb(t_node **head_b, bool print)
 {
 	int	tmp;
 
@@ -20,10 +20,11 @@ void	sb(t_node **head_b)
 	(*head_b)->next->data = (*head_b)->next->next->data;
 	(*head_b)->next->next->data = tmp;
 
-	ft_putstr_fd("sb\n", 1);
+	if (print == true)
+		ft_putstr_fd("sb\n", 1);
 }
 
-void	rb(t_node **head_b, bool overwrite_enabled)
+void	rb(t_node **head_b, bool print)
 {
 	t_node	*first;
 	t_node	*second;
@@ -44,11 +45,11 @@ void	rb(t_node **head_b, bool overwrite_enabled)
 	first->next = (*head_b);
 	(*head_b)->prev = first;
 
-	if (overwrite_enabled == 1)
+	if (print == true)
 		ft_putstr_fd("rb\n", 1);
 }
 
-void	rrb(t_node	**head_b, bool overwrite_enabled)
+void	rrb(t_node	**head_b, bool print)
 {
 	t_node	*first;
 	t_node	*last;
@@ -69,7 +70,7 @@ void	rrb(t_node	**head_b, bool overwrite_enabled)
 	last->next = first;
 	first->prev = last;
 
-	if (overwrite_enabled == 1)
+	if (print == true)
 		ft_putstr_fd("rrb\n", 1);
 }
 
@@ -77,7 +78,7 @@ void	rrb(t_node	**head_b, bool overwrite_enabled)
 // h 1 5 4 0 h
 // h 0 1 5 4 h
 
-void	pb(t_node **head_a, t_node **head_b)
+void	pb(t_node **head_a, t_node **head_b, bool print)
 {
 	t_node	*a_first;
 	t_node	*b_first;
@@ -95,5 +96,6 @@ void	pb(t_node **head_a, t_node **head_b)
 
 	a_first->next = b_first;
 	b_first->prev = a_first;
-	ft_putstr_fd("pb\n", 1);
+	if (print == true)
+		ft_putstr_fd("pb\n", 1);
 }

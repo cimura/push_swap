@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:18 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 12:45:25 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 13:54:49 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	main(int argc, char *argv[])
 		return (free(head_a), free(head_b), no_nodes_print());
 	else if (count_stack_length(head_a) == 1)
 	{
-		t_node *current = head_a->next;
-		while (current != head_a)
-		{
-			free(current);
-			current = current->next;
-		}
+		// t_node *current = head_a->next;
+		// while (current != head_a)
+		// {
+		// 	free(current);
+		// 	current = current->next;
+		// }
 		return (free(head_a), free(head_b), 0);
 	}
 	else if (count_stack_length(head_a) == 2)

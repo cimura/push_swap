@@ -3,25 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   same_operation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 14:50:06 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:29:06 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
 
-void	rr(t_node **head_a, t_node **head_b)
+void	rr(t_node **head_a, t_node **head_b, bool print)
 {
-	ra(head_a, 0);
-	rb(head_b, 0);
-	ft_putstr_fd("rr\n", 1);
+	if (print == true)
+	{
+		ra(head_a, true);
+		rb(head_b, true);
+		ft_putstr_fd("rr\n", 1);
+	}
+	ra(head_a, false);
+	rb(head_b, false);
 }
 
-void	rrr(t_node **head_a, t_node **head_b)
+void	rrr(t_node **head_a, t_node **head_b, bool print)
 {
-	rra(head_a, 0);
-	rrb(head_b, 0);
-	ft_putstr_fd("rrr\n", 1);
+	if (print == true)
+	{
+		rra(head_a, true);
+		rrb(head_b, true);
+		ft_putstr_fd("rrr\n", 1);
+	}
+		rra(head_a, false);
+		rrb(head_b, false);
 }

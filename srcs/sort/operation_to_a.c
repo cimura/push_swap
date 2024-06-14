@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   operation_to_a.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 14:45:39 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 15:22:08 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
 
-void	sa(t_node **head_a)
+void	sa(t_node **head_a, bool print)
 {
 	int	tmp;
 
@@ -20,10 +20,11 @@ void	sa(t_node **head_a)
 	(*head_a)->next->data = (*head_a)->next->next->data;
 	(*head_a)->next->next->data = tmp;
 
-	ft_putstr_fd("sa\n", 1);
+	if (print == true)
+		ft_putstr_fd("sa\n", 1);
 }
 
-void	ra(t_node **head_a, bool overwrite_enabled)
+void	ra(t_node **head_a, bool print)
 {
 	t_node	*first;
 	t_node	*second;
@@ -44,11 +45,11 @@ void	ra(t_node **head_a, bool overwrite_enabled)
 	last->next = first;
 	first->prev = last;
 
-	if (overwrite_enabled == 1)
+	if (print == 1)
 		ft_putstr_fd("ra\n", 1);
 }
 
-void	rra(t_node **head_a, bool overwrite_enabled)
+void	rra(t_node **head_a, bool print)
 {
 	t_node	*first;
 	t_node	*last;
@@ -69,11 +70,11 @@ void	rra(t_node **head_a, bool overwrite_enabled)
 	last->next = first;
 	first->prev = last;
 
-	if (overwrite_enabled == 1)
+	if (print == 1)
 		ft_putstr_fd("rra\n", 1);
 }
 
-void	pa(t_node **head_a, t_node **head_b)
+void	pa(t_node **head_a, t_node **head_b, bool print)
 {
 	t_node	*a_first;
 	t_node	*b_first;
@@ -91,7 +92,8 @@ void	pa(t_node **head_a, t_node **head_b)
 
 	b_first->next = a_first;
 	a_first->prev = b_first;
-	ft_putstr_fd("pa\n", 1);
+	if (print == true)
+		ft_putstr_fd("pa\n", 1);
 }
 
 // 前から見てtargetを見つける関数
