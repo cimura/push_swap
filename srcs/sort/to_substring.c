@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:54:14 by cimy              #+#    #+#             */
-/*   Updated: 2024/06/14 11:40:31 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 12:04:25 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	count_double_ptr(char **argv)
 	return (count);
 }
 
-int	count_dwords(char  **s, char c)
+int	count_dwords(char **s, char c)
 {
 	int	i;
 	int	j;
@@ -55,22 +55,38 @@ char	**ft_double_strjoin(char **argv)
 
 	i = 0;
 	indx = 0;
-	substring = malloc(sizeof(char *) * (count_dwords(argv, ' ') + 1));
+	// substring = malloc(sizeof(char *) * (count_dwords(argv, ' ') + 1));
 	// printf("to num: %d\n", count_dwords(argv, ' ') + 1);
-	joined = malloc(sizeof(char *) * (count_double_ptr(argv) + 1));
+	joined = malloc(sizeof(char *) * (count_dwords(argv, ' ') + 1));
+	if (!joined)
+		return (NULL);
 	// printf("to null: %d\n", (count_double_ptr(argv) + 1));
 	while (argv[i] != NULL)
 	{
 		j = 0;
+		// printf("argv[i]%s\n", argv[i]);
 		substring = ft_split(argv[i], ' ');
 		while (substring[j] != NULL)
 		{
-			joined[indx] = substring[j];
+			// printf("substring[i]%s\n", substring[j]);
+
+			joined[indx] = ft_strdup(substring[j]);
+			free(substring[j]);
+			// printf("joined[i]%s\n", joined[indx]);
 			j++;
 			indx++;
 		}
+		free(substring);
 		i++;
 	}
 	joined[indx] = NULL;
+	// debug
+	// int x = 0;
+	// while (joined[x] != NULL)
+	// {
+	// 	printf("joined[i]%s\n", joined[x]);
+	// 	x++;
+	// }
+	//
 	return (joined);
 }

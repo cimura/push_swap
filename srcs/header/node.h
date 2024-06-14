@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 10:58:27 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 12:13:46 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,14 @@ void	last_rotation(t_node *head_a);
 bool	check_string_is_num(char *str);
 bool	check_num(long long num);
 bool	check_duplicate_num(char **num_array);
-int	is_sign(char c);
 int	error_handling(char **argv);
 
 // in util_error_handling.c
 bool	is_num(char c);
 int	count_num_array(char **num_array);
 long long	ft_atol(const char *str);
+int	is_sign(char c);
+int	no_nodes_print(void);
 
 
 void	setup_stack(t_node **head_a, t_node **head_b, char **num_array);

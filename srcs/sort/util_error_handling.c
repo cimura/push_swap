@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_error_handling.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:30:51 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 15:34:51 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 12:12:56 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,10 @@ int	is_sign(char c)
 	if (c == '+')
 		return (1);
 	return (0);
+}
+
+int	no_nodes_print(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	return (1);
 }
