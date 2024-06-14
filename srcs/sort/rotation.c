@@ -6,20 +6,11 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:45:32 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 15:29:27 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 16:32:11 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
-
-// t_node *
-// {
-// 	while (count_stack_length(head_a) != 3)
-// 	{
-
-// 		pb();
-// 	}
-// }
 
 void	perform_ab_rotations(t_node *head_a, t_node *head_b)
 {

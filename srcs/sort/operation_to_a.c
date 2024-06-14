@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 15:22:08 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 16:25:41 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ra(t_node **head_a, bool print)
 	last->next = first;
 	first->prev = last;
 
-	if (print == 1)
+	if (print == true)
 		ft_putstr_fd("ra\n", 1);
 }
 
@@ -70,7 +70,7 @@ void	rra(t_node **head_a, bool print)
 	last->next = first;
 	first->prev = last;
 
-	if (print == 1)
+	if (print == true)
 		ft_putstr_fd("rra\n", 1);
 }
 

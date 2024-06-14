@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 15:56:41 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 16:46:20 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ t_node	*initialize_stack();
 void	add_node(t_node **head, int data);
 void	print_list(t_node *head);
 int		count_stack_length(t_node *head);
-t_node	*go_x_steps(t_node **head, int num);
 
 // in sort_small_stacks.c
 int	handle_two_nodes(t_node **head_a);
