@@ -45,7 +45,7 @@ int	main(int argc, char *argv[])
 		return (handle_three_nodes(&head_a));
 
 	push_swap(&head_a, &head_b);
-	// print_list(head_a);
+	 print_list(head_a);
 	return (0);
 }
 
