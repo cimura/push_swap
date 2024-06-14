@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:54:14 by cimy              #+#    #+#             */
-/*   Updated: 2024/06/14 10:58:43 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 11:40:31 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ char	**ft_double_strjoin(char **argv)
 	i = 0;
 	indx = 0;
 	substring = malloc(sizeof(char *) * (count_dwords(argv, ' ') + 1));
+	// printf("to num: %d\n", count_dwords(argv, ' ') + 1);
 	joined = malloc(sizeof(char *) * (count_double_ptr(argv) + 1));
+	// printf("to null: %d\n", (count_double_ptr(argv) + 1));
 	while (argv[i] != NULL)
 	{
 		j = 0;

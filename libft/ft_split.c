@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:37:08 by sshimura          #+#    #+#             */
-/*   Updated: 2024/05/06 14:54:42 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:42:14 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,11 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	word_count = count_words(s, c);
 	before_split = (char **)malloc(sizeof(char *) * (word_count + 1));
-	if (before_split == NULL)
-	{
-		free(before_split);
+	if (!before_split)
 		return (NULL);
-	}
 	before_split[word_count] = NULL;
 	before_split = generate_substrings(s, before_split, c);
-	if (before_split == NULL)
-	{
-		free(before_split);
+	if (!before_split)
 		return (NULL);
-	}
 	return (before_split);
 }

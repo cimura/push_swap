@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:18 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 11:17:04 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 11:39:37 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ int	main(int argc, char *argv[])
 		return (0);
 	else if (argc >= 2)
 		argv = ft_double_strjoin(&argv[1]);
+
+	// debug
+	int i = 0;
+	while (argv[i] != NULL)
+	{
+		printf("%s\n", argv[i]);
+		i++;
+	}
+	// debug
 
 	if (error_handling(argv) == 1)
 		return (1);
