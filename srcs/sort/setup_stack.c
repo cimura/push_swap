@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:52:45 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 12:49:13 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 12:35:06 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	setup_stack(t_node **head_a, t_node **head_b, char **argv)
 		add_node(head_a, ft_atoi(argv[i]));
 		i++;
 	}
+	free(argv);
 }

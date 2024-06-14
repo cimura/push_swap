@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:13 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 14:49:52 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 12:41:08 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,4 @@ void	print_list(t_node *head)
 		current = current->next;
 	}
 	printf("\n");
-}
-
-t_node	*go_x_steps(t_node **head, int num)
-{
-	int		i;
-	t_node	*current;
-
-	i = 0;
-	current = (*head)->next;
-	while (current != NULL && i < num)
-	{
-		current = current->next;
-		i++;
-	}
-	return (current);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:29 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/13 15:43:06 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/14 12:33:14 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	error_handling(char **argv)
 	i = 0;
 	if (check_duplicate_num(argv) == false)
 	{
+		free(argv);
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
@@ -28,6 +29,7 @@ int	error_handling(char **argv)
 		num = ft_atol(argv[i]);
 		if (!check_string_is_num(argv[i]) || !check_num(num))
 		{
+			free(argv);
 			ft_putstr_fd("Error\n", 2);
 			return (1);
 		}
