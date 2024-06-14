@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:32:05 by cimy              #+#    #+#             */
-/*   Updated: 2024/06/14 17:26:59 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/14 17:48:27 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ void	do_instruction(t_node *head_a, t_node *head_b, char *str)
 	else if (str[0] == 'r' && str[1] == 'a')
 		return (ra(&head_a, false));
 	else if (str[0] == 'r' && str[1] == 'b')
-		return (rb(&head_a, false));
+		return (rb(&head_b, false));
 	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'r' && str[3] == '\n')
 		return (rrr(&head_a, &head_b, false));
 	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'a')
 		return (rra(&head_a, false));
 	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'b')
-		return (rrb(&head_a, false));
+		return (rrb(&head_b, false));
 	else if (str[0] == 'r' && str[1] == 'r')
 		return (rr(&head_a, &head_b, false));
 }
@@ -96,11 +96,12 @@ int	main(int argc, char *argv[])
 	// print_list(head_a);
 	while ((gnl = get_next_line(0)) != NULL)
 	{
-		if (is_instruction(gnl) == false)
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (1);
-		}
+		// if (is_instruction(gnl) == false)
+		// {
+		// 	ft_putstr_fd("Error\n", 2);
+		// 	return (1);
+		// }
+		// printf("%s", gnl);
 		do_instruction(head_a, head_b, gnl);
 	}
 
