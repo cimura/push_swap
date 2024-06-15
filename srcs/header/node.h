@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 19:05:16 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/15 20:14:40 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ typedef	struct	s_node
 {
 	struct s_node	*next;
 	struct s_node	*prev;
-	int				data;
+	long				data;
 	int				now_cost;
 	int				push_cost;
-	int				push_data;
+	// int				push_data;
 	int				rotation;
 	bool			is_clock;
 }				t_node;
@@ -59,9 +59,9 @@ void	rrb(t_node	**head_b, bool print);
 void	pb(t_node **head_a, t_node **head_b, bool print);
 
 // in operation_list.c
-t_node	*create_node(int data);
+t_node	*create_node(long data);
 t_node	*initialize_stack();
-void	add_node(t_node **head, int data);
+void	add_node(t_node **head, long data);
 void	print_list(t_node *head);
 int		count_stack_length(t_node *head);
 
@@ -73,7 +73,7 @@ int	handle_three_nodes(t_node **head_a);
 t_node	*find_max_node(t_node *head);
 t_node	*find_min_node(t_node *head);
 // t_node	*find_last_node(t_node *head);
-int	max(int a, int b);
+long	max(long a, long b);
 
 // in calculate_push_cost.c
 int	calculate_push_cost(t_node *head, t_node *pos, bool overwrite_enabled);
@@ -91,14 +91,14 @@ void	last_rotation(t_node *head_a);
 
 // in error_handling.c
 bool	check_string_is_num(char *str);
-bool	check_num(long long num);
+bool	check_num(long num);
 bool	check_duplicate_num(char **num_array);
 int	error_handling(char **argv);
 
 // in util_error_handling.c
 bool	is_num(char c);
 int	count_num_array(char **num_array);
-long long	ft_atol(const char *str);
+long	ft_atol(const char *str);
 int	is_sign(char c);
 int	no_nodes_print(void);
 

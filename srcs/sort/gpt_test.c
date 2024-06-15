@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:18 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 19:09:05 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/15 20:27:23 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char *argv[])
 		return (handle_three_nodes(&head_a));
 
 	push_swap(&head_a, &head_b);
-	print_list(head_a);
+	// print_list(head_a);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:32:05 by cimy              #+#    #+#             */
-/*   Updated: 2024/06/14 17:48:27 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/15 20:27:17 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	do_instruction(t_node *head_a, t_node *head_b, char *str)
 		return (ra(&head_a, false));
 	else if (str[0] == 'r' && str[1] == 'b')
 		return (rb(&head_b, false));
-	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'r' && str[3] == '\n')
+	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'r')
 		return (rrr(&head_a, &head_b, false));
 	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'a')
 		return (rra(&head_a, false));

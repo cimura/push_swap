@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation_to_b.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 15:25:02 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/15 20:12:16 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sb(t_node **head_b, bool print)
 {
-	int	tmp;
+	long	tmp;
 
 	tmp = (*head_b)->next->data;
 	(*head_b)->next->data = (*head_b)->next->next->data;

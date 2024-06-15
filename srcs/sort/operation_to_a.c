@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation_to_a.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:04 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 16:25:41 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/15 20:47:19 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sa(t_node **head_a, bool print)
 {
-	int	tmp;
+	long	tmp;
 
 	tmp = (*head_a)->next->data;
 	(*head_a)->next->data = (*head_a)->next->next->data;
@@ -100,17 +100,21 @@ void	pa(t_node **head_a, t_node **head_b, bool print)
 // これを基にpushコストを計算できるが、構造体でどちらに回転すべきかの情報を
 // 持っておかないといけない
 
+// ***see***
+// 自分よりもやや小さいやつを探す
+// 10 -2 -21
+
 t_node	*find_target_pb(t_node *head_b, t_node *pos_a)
 {
 	t_node	*max_node_b;
 	t_node	*min_node_b;
 	t_node	*current;
 	t_node	*target;
-	int		diff;
+	long		diff;
 
 	current = head_b->next;
 	target = head_b->next;
-	diff = INT_MAX;
+	diff = LONG_MAX;
 	max_node_b = find_max_node(head_b);
 	min_node_b = find_min_node(head_b);
 	if (pos_a->data < min_node_b->data)
@@ -118,7 +122,7 @@ t_node	*find_target_pb(t_node *head_b, t_node *pos_a)
 	while (current != head_b)
 	{
 		if (diff > pos_a->data - current->data
-			&& pos_a->data - current->data > 0)
+			&& pos_a->data > current->data)
 		{
 			diff = pos_a->data - current->data;
 			target = current;
@@ -134,11 +138,11 @@ t_node	*find_target_pa(t_node *head_a, t_node *pos_b)
 	t_node	*min_node_a;
 	t_node	*current;
 	t_node	*target;
-	int		diff;
+	long		diff;
 
 	current = head_a->next;
 	target = head_a->next;
-	diff = INT_MAX;
+	diff = LONG_MAX;
 	max_node_a = find_max_node(head_a);
 	min_node_a = find_min_node(head_a);
 	if (pos_b->data > max_node_a->data)
@@ -155,3 +159,6 @@ t_node	*find_target_pa(t_node *head_a, t_node *pos_b)
 	}
 	return (target);
 }
+
+
+// LONG_MAX

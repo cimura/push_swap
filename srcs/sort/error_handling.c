@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:29 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 19:19:40 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/15 20:14:18 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	error_handling(char **argv)
 {
 	int			i;
-	long long	num;
+	long	num;
 
 	i = 0;
 	if (check_duplicate_num(argv) == false)
@@ -38,7 +38,7 @@ int	error_handling(char **argv)
 	return (0);
 }
 
-bool	check_num(long long num)
+bool	check_num(long num)
 {
 	if (num > INT_MAX || num < INT_MIN)
 		return (false);

@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:50 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/12 14:50:52 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/15 20:12:45 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_node	*find_min_node(t_node *head)
 	return (min_node);
 }
 
-int	max(int a, int b)
+long	max(long a, long b)
 {
 	if (a >= b)
 		return (a);

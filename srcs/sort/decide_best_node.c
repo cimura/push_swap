@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:28:47 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 19:08:04 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/15 19:22:15 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	decide_push_cost_toa(t_node **head_a, t_node **head_b)
 {
 	t_node	*current;
 	t_node	*target;
-	int		cost_mine;
+	int		min_count;
 	int		now_count;
 
 	current = (*head_b)->next;
-	cost_mine = INT_MAX;
+	min_count = INT_MAX;
 	while (current != (*head_b))
 	{
 		(*head_b)->now_cost = calculate_push_cost(*head_b, current, false);
@@ -31,11 +31,11 @@ void	decide_push_cost_toa(t_node **head_a, t_node **head_b)
 			now_count = max((*head_a)->now_cost, (*head_b)->now_cost);
 		else
 			now_count = (*head_a)->now_cost + (*head_b)->now_cost;
-		if (cost_mine > now_count)
+		if (min_count > now_count)
 		{
 			(*head_a)->push_cost = calculate_push_cost(*head_a, target, true);
 			(*head_b)->push_cost = calculate_push_cost(*head_b, current, true);
-			cost_mine = now_count;
+			min_count = now_count;
 		}
 		// printf("Current: %d, Target: %d, Cost: %d\n", current->data, target->data, now_count);
 		current = current->next;
@@ -51,11 +51,11 @@ void	decide_push_cost_tob(t_node **head_a, t_node **head_b)
 {
 	t_node	*current;
 	t_node	*target;
-	int		cost_mine;
+	int		min_count;
 	int		now_count;
 
 	current = (*head_a)->next;
-	cost_mine = INT_MAX;
+	min_count = INT_MAX;
 	while (current != (*head_a))
 	{
 		(*head_a)->now_cost = calculate_push_cost(*head_a, current, false);
@@ -66,11 +66,11 @@ void	decide_push_cost_tob(t_node **head_a, t_node **head_b)
 			now_count = max((*head_a)->now_cost, (*head_b)->now_cost);
 		else
 			now_count = (*head_a)->now_cost + (*head_b)->now_cost;
-		if (cost_mine > now_count)
+		if (min_count > now_count)
 		{
 			(*head_a)->push_cost = calculate_push_cost(*head_a, current, true);
 			(*head_b)->push_cost = calculate_push_cost(*head_b, target, true);
-			cost_mine = now_count;
+			min_count = now_count;
 		}
 		// printf("Current: %d, Target: %d, Cost: %d\n", current->data, target->data, now_count);
 

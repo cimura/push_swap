@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_error_handling.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:30:51 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 12:12:56 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/15 20:14:26 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	is_num(char c)
 	return (false);
 }
 
-long long	ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
 	int		i;
 	int		sign;

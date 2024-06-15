@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   operations_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:13 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 12:41:08 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/15 20:08:49 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
 
-t_node	*create_node(int data)
+t_node	*create_node(long data)
 {
 	t_node	*new_node;
 
@@ -33,7 +33,7 @@ t_node	*initialize_stack(void)
 	return (head);
 }
 
-void	add_node(t_node **head, int data)
+void	add_node(t_node **head, long data)
 {
 	t_node	*new_node;
 	t_node	*last;
@@ -54,7 +54,7 @@ void	print_list(t_node *head)
 	current = head->next;
 	while (current != head)
 	{
-		printf("%d ", current->data);
+		printf("%ld ", current->data);
 		current = current->next;
 	}
 	printf("\n");

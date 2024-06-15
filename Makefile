@@ -15,29 +15,31 @@ SRCS			=	srcs/sort/basic_utils_list.c \
 					srcs/sort/setup_stack.c \
 					srcs/sort/decide_best_node.c \
 					srcs/sort/push_swap.c \
-					srcs/sort/to_substring.c \
+					srcs/sort/to_substring.c
 
 SORT_MAIN_SRCS	=	srcs/sort/gpt_test.c \
 
 GNL_SRCS		=	get_next_line/get_next_line.c \
-					get_next_line/get_next_line_utils.c \
+					get_next_line/get_next_line_utils.c
 
 CC				=	cc
-CHECKER_SRCS	=	srcs/checker/checker.c \
+CHECKER_SRCS	=	srcs/checker/checker.c
 
 LIBFT			=	libft/libft.a
 CFLAGS			=	-Wall -Wextra -Werror
+OBJS			=	$(SOURCES:%.c=%.o)
 
 ifeq ($(BONUS_FLAG),true)
-		SOURCES = $(SRCS) $(CHECKER_SRCS)
+		SOURCES = $(SRCS) $(CHECKER_SRCS) $(GNL_SRCS)
 else
-		SOURCES = $(SRCS) $(SORT_MAIN_SRCS) $(GNL_SRCS)
+		SOURCES = $(SRCS) $(SORT_MAIN_SRCS)
 endif
 
 $(LIBFT):
 		$(MAKE) -C $(LIBFT_DIR)
 
-OBJS			=	$(SOURCES:%.c=%.o)
+%.o:%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT)
 		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
@@ -47,7 +49,7 @@ $(BONUS): $(OBJS) $(LIBFT)
 
 all:	$(NAME)
 
-bonus:	$(BONUS)
+bonus:
 		$(MAKE) BONUS_FLAG=true $(BONUS)
 
 clean:
