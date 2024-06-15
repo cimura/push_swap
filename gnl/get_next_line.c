@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:44:02 by sshimura          #+#    #+#             */
-/*   Updated: 2024/05/15 23:54:57 by cimy             ###   ########.fr       */
+/*   Updated: 2024/05/15 12:46:51 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
-	static char	*leftovers[FD_MAX];
+	static char	*leftover = NULL;
 	char		*line;
 
 	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0 || FD_MAX <= fd)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (leftovers[fd] == NULL)
+	if (leftover == NULL)
 	{
-		leftovers[fd] = malloc(1);
-		if (!leftovers[fd])
+		leftover = malloc(1);
+		if (!leftover)
 			return (NULL);
-		leftovers[fd][0] = '\0';
+		*leftover = '\0';
 	}
-	line = check_newline(&leftovers[fd]);
+	line = check_newline(&leftover);
 	if (line != NULL)
 		return (line);
-	line = read_and_join(fd, &leftovers[fd]);
+	line = read_and_join(fd, &leftover);
 	if (line != NULL)
 		return (line);
-	return (finalize_line(&leftovers[fd]));
+	return (finalize_line(&leftover));
 }
 
 char	*check_newline(char **leftover)

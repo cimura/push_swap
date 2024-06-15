@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:29 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 12:33:14 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/15 19:19:40 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	error_handling(char **argv)
 	while (argv[i] != NULL)
 	{
 		num = ft_atol(argv[i]);
-		if (!check_string_is_num(argv[i]) || !check_num(num))
+		if (check_string_is_num(argv[i]) == false || check_num(num) == false)
 		{
 			free(argv);
 			ft_putstr_fd("Error\n", 2);
@@ -51,7 +51,11 @@ bool	check_string_is_num(char *str)
 
 	i = 0;
 	if (str[0] == '-' || str[0] == '+')
+	{
 		i++;
+		if (str[1] == '\0')
+			return (false);
+	}
 	while (str[i] != '\0')
 	{
 		if (!is_num(str[i]))

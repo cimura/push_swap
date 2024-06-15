@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:36:42 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 02:26:55 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/15 19:06:52 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	push_swap(t_node **head_a, t_node **head_b)
 	{
 		decide_push_cost_tob(head_a, head_b);
 		rotation_push(*head_a, *head_b, false);
-		printf("\na: \n");
-		print_list(*head_a);
-		printf("\nb: \n");
-		print_list(*head_b);
-		printf("\n");
+		// printf("\na: \n");
+		// print_list(*head_a);
+		// printf("\nb: \n");
+		// print_list(*head_b);
+		// printf("\n");
 	}
 	handle_three_nodes(head_a);
 	// print_list(*head_a);
@@ -35,11 +35,11 @@ void	push_swap(t_node **head_a, t_node **head_b)
 	{
 		decide_push_cost_toa(head_a, head_b);
 		rotation_push(*head_a, *head_b, true);
-		printf("\na: \n");
-		print_list(*head_a);
-		printf("\nb: \n");
-		print_list(*head_b);
-		printf("\n");
+		// printf("\na: \n");
+		// print_list(*head_a);
+		// printf("\nb: \n");
+		// print_list(*head_b);
+		// printf("\n");
 	}
 	final_rotation(head_a);
 }

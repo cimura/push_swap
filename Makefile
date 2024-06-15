@@ -23,15 +23,15 @@ GNL_SRCS		=	get_next_line/get_next_line.c \
 					get_next_line/get_next_line_utils.c \
 
 CC				=	cc
-CHECKER_SRCS	=	srcs/checker/checker.c
+CHECKER_SRCS	=	srcs/checker/checker.c \
 
 LIBFT			=	libft/libft.a
 CFLAGS			=	-Wall -Wextra -Werror
 
 ifeq ($(BONUS_FLAG),true)
-		SOURCES = $(SRCS) $(GNL_SRCS) $(CHECKER_SRCS)
+		SOURCES = $(SRCS) $(CHECKER_SRCS)
 else
-		SOURCES = $(SRCS) $(SORT_MAIN_SRCS)
+		SOURCES = $(SRCS) $(SORT_MAIN_SRCS) $(GNL_SRCS)
 endif
 
 $(LIBFT):
@@ -47,7 +47,7 @@ $(BONUS): $(OBJS) $(LIBFT)
 
 all:	$(NAME)
 
-bonus:
+bonus:	$(BONUS)
 		$(MAKE) BONUS_FLAG=true $(BONUS)
 
 clean:

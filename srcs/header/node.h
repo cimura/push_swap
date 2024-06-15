@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 16:46:20 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/15 19:05:16 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	push_swap(t_node **head_a, t_node **head_b);
 void	final_rotation(t_node **head_a);
 
 // in to_substring.c
-int	count_double_ptr(char **argv);
+// int	count_double_ptr(char **argv);
 int	count_dwords(char  **s, char c);
 char	**ft_double_strjoin(char **argv);
 

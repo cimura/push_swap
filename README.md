@@ -29,3 +29,9 @@ cc  operations_list.c operation_to_a.c libft/libft.a basic_utils_list.c calculat
 cc  operations_list.c operation_to_a.c libft/libft.a basic_utils_list.c calculate_push_cost.c operation_to_b.c gpt_test.c  three_numbers.c same_operation.c
 
 ```
+
+```
+./push_swap -1541824538 135141443 -1539930390 -1772864358 -1203112166 30924875 -81828345 2135289628 -1282442333 -680266947
+
+```
+
