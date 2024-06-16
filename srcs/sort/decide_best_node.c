@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:28:47 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 19:22:15 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/16 13:34:27 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,8 @@ void	decide_push_cost_toa(t_node **head_a, t_node **head_b)
 			(*head_b)->push_cost = calculate_push_cost(*head_b, current, true);
 			min_count = now_count;
 		}
-		// printf("Current: %d, Target: %d, Cost: %d\n", current->data, target->data, now_count);
 		current = current->next;
 	}
-	// printf("\na: \n");
-	// print_list(*head_a);
-	// printf("\nb: \n");
-	// print_list(*head_b);
-	// printf("\n");
 }
 
 void	decide_push_cost_tob(t_node **head_a, t_node **head_b)
@@ -72,13 +66,6 @@ void	decide_push_cost_tob(t_node **head_a, t_node **head_b)
 			(*head_b)->push_cost = calculate_push_cost(*head_b, target, true);
 			min_count = now_count;
 		}
-		// printf("Current: %d, Target: %d, Cost: %d\n", current->data, target->data, now_count);
-
 		current = current->next;
 	}
-	// printf("\na: \n");
-	// print_list(*head_a);
-	// printf("\nb: \n");
-	// print_list(*head_b);
-	// printf("\n");
 }

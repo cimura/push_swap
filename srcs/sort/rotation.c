@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:45:32 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 16:32:11 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/16 15:45:59 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,9 @@ void	rotation_push(t_node *head_a, t_node *head_b, bool is_push_a)
 	perform_ab_rotations(head_a, head_b);
 	perform_a_rotations(head_a);
 	perform_b_rotations(head_b);
-
 	if (is_push_a == true)
 		return (pa(&head_a, &head_b, true));
 	return (pb(&head_a, &head_b, true));
-
 }
 
 void	last_rotation(t_node *head_a)

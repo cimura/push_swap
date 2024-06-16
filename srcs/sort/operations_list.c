@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:13 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 20:08:49 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/16 15:47:32 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,21 @@ void	add_node(t_node **head, long data)
 
 	new_node = create_node(data);
 	last = (*head)->prev;
-
 	new_node->next = (*head);
 	new_node->prev = last;
 	last->next = new_node;
 	(*head)->prev = new_node;
 }
 
-void	print_list(t_node *head)
+void	free_node(t_node *head)
 {
 	t_node	*current;
 
 	current = head->next;
+	free(head);
 	while (current != head)
 	{
-		printf("%ld ", current->data);
+		free(current);
 		current = current->next;
 	}
-	printf("\n");
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gpt_test.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:18 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 20:27:23 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/16 15:48:52 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,19 @@ int	main(int argc, char *argv[])
 		return (0);
 	else if (argc >= 2)
 		argv = ft_double_strjoin(&argv[1]);
-
 	if (error_handling(argv) == 1)
 		return (1);
 	setup_stack(&head_a, &head_b, argv);
-	// print_list(head_a);
-
 	if (count_stack_length(head_a) == 0)
-		return (free(head_a), free(head_b), no_nodes_print());
+		return (free_node(head_a), free_node(head_b), no_nodes_print());
 	else if (count_stack_length(head_a) == 1)
-	{
-		// t_node *current = head_a->next;
-		// while (current != head_a)
-		// {
-		// 	free(current);
-		// 	current = current->next;
-		// }
-		return (free(head_a), free(head_b), 0);
-	}
+		return (free_node(head_a), free_node(head_b), 0);
 	else if (count_stack_length(head_a) == 2)
-		return (handle_two_nodes(&head_a));
+		return (handle_two(&head_a), free_node(head_a), free_node(head_b), 0);
 	else if (count_stack_length(head_a) == 3)
-		return (handle_three_nodes(&head_a));
-
+		return (handle_three(&head_a), free_node(head_a), free_node(head_b), 0);
 	push_swap(&head_a, &head_b);
-	// print_list(head_a);
+	free_node(head_a);
+	free_node(head_b);
 	return (0);
 }
-
-// __attribute__((destructor))
-// static void destructor() {
-//     system("leaks -q push_swap");
-// }

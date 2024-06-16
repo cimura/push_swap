@@ -6,13 +6,11 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:50 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 20:12:45 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/16 13:34:06 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
-
-// functions to handle errors
 
 int	count_stack_length(t_node *head)
 {
@@ -28,13 +26,6 @@ int	count_stack_length(t_node *head)
 	}
 	return (count);
 }
-
-// t_node	*find_last_node(t_node *head)
-// {
-// 	t_node	*current = head;
-// 	current = current->prev;
-// 	return (current);
-// }
 
 t_node	*find_max_node(t_node *head)
 {

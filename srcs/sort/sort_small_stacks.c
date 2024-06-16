@@ -3,29 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small_stacks.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:53:33 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/14 15:25:28 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/16 15:45:40 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
 
-int	handle_two_nodes(t_node **head_a)
+void	handle_two(t_node **head_a)
 {
 	t_node	*x;
 	t_node	*y;
 
 	x = (*head_a)->next;
 	y = x->next;
-
 	if (x->data > y->data)
 		sa(head_a, true);
-	return (0);
 }
 
-int	handle_three_nodes(t_node **head_a)
+void	handle_three(t_node **head_a)
 {
 	t_node	*current;
 	t_node	*max_node;
@@ -39,5 +37,4 @@ int	handle_three_nodes(t_node **head_a)
 	current = (*head_a)->next;
 	if (current->data > current->next->data)
 		sa(head_a, true);
-	return (0);
 }

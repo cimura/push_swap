@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:29 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 20:14:18 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/16 15:49:03 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	error_handling(char **argv)
 {
-	int			i;
+	int		i;
 	long	num;
 
 	i = 0;
 	if (check_duplicate_num(argv) == false)
 	{
-		free(argv);
+		free_dptr(argv);
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
@@ -29,7 +29,7 @@ int	error_handling(char **argv)
 		num = ft_atol(argv[i]);
 		if (check_string_is_num(argv[i]) == false || check_num(num) == false)
 		{
-			free(argv);
+			free_dptr(argv);
 			ft_putstr_fd("Error\n", 2);
 			return (1);
 		}
@@ -75,7 +75,6 @@ bool	check_duplicate_num(char **num_array)
 
 	i = 0;
 	size = count_num_array(num_array);
-
 	while (i < size)
 	{
 		j = i + 1;
@@ -91,4 +90,17 @@ bool	check_duplicate_num(char **num_array)
 		i++;
 	}
 	return (true);
+}
+
+void	free_dptr(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i] != NULL)
+	{
+		free(argv[i]);
+		i++;
+	}
+	free(argv);
 }

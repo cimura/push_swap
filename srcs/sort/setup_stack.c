@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:52:45 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/15 19:07:04 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/16 14:21:17 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	setup_stack(t_node **head_a, t_node **head_b, char **argv)
 		add_node(head_a, ft_atol(argv[i]));
 		i++;
 	}
-	free(argv);
+	free_dptr(argv);
 }

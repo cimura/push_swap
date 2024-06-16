@@ -6,7 +6,7 @@
 /*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:32:05 by cimy              #+#    #+#             */
-/*   Updated: 2024/06/15 20:27:17 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/16 13:49:35 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	is_sorted(t_node *head_a)
 {
-	t_node	*current; 
+	t_node	*current;
 
 	current = head_a->next;
 	while (current->next != head_a)
@@ -79,40 +79,29 @@ void	do_instruction(t_node *head_a, t_node *head_b, char *str)
 		return (rr(&head_a, &head_b, false));
 }
 
-// bool	checker(t_node *)
-
 int	main(int argc, char *argv[])
 {
 	t_node	*head_a;
 	t_node	*head_b;
 	char	*gnl;
 
+	gnl = "";
 	if (argc == 1)
 		return (0);
 	else if (argc >= 2)
 		argv = ft_double_strjoin(&argv[1]);
-
+	if (error_handling(argv) == 1)
+		return (1);
 	setup_stack(&head_a, &head_b, argv);
-	// print_list(head_a);
-	while ((gnl = get_next_line(0)) != NULL)
+	while (gnl != NULL)
 	{
-		// if (is_instruction(gnl) == false)
-		// {
-		// 	ft_putstr_fd("Error\n", 2);
-		// 	return (1);
-		// }
-		// printf("%s", gnl);
+		gnl = get_next_line(0);
+		if (is_instruction(gnl) == false)
+			return (ft_putstr_fd("Error\n", 2), 1);
 		do_instruction(head_a, head_b, gnl);
 	}
-
-	// print_list(head_a);
-	// sa(&head_a, false);
-
 	if (is_sorted(head_a) == false)
-	{
-		ft_putstr_fd("KO\n", 2);
-		return (1);
-	}
+		return (ft_putstr_fd("KO\n", 2), 1);
 	ft_putstr_fd("OK\n", 1);
 	return (0);
 }

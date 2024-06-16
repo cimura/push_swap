@@ -3,26 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   to_substring.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:54:14 by cimy              #+#    #+#             */
-/*   Updated: 2024/06/14 12:31:53 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/16 14:47:41 by sshimura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
 
-int	count_double_ptr(char **argv)
-{
-	int	count;
-
-	count = 0;
-	while (argv[count] != NULL)
-		count++;
-	return (count);
-}
-
-int	count_dwords(char **s, char c)
+int	count_num_arr(char **s, char c)
 {
 	int	i;
 	int	j;
@@ -55,38 +45,31 @@ char	**ft_double_strjoin(char **argv)
 
 	i = 0;
 	indx = 0;
-	// substring = malloc(sizeof(char *) * (count_dwords(argv, ' ') + 1));
-	// printf("to num: %d\n", count_dwords(argv, ' ') + 1);
-	joined = malloc(sizeof(char *) * (count_dwords(argv, ' ') + 1));
+	joined = malloc(sizeof(char *) * (count_num_arr(argv, ' ') + 1));
 	if (!joined)
 		return (NULL);
-	// printf("to null: %d\n", (count_double_ptr(argv) + 1));
 	while (argv[i] != NULL)
 	{
 		j = 0;
-		// printf("argv[i]%s\n", argv[i]);
 		substring = ft_split(argv[i], ' ');
 		while (substring[j] != NULL)
 		{
-			// printf("substring[i]%s\n", substring[j]);
-
-			joined[indx] = ft_strdup(substring[j]);
-			free(substring[j]);
-			// printf("joined[i]%s\n", joined[indx]);
-			j++;
-			indx++;
+			joined[indx++] = free_dup(substring[j++]);
 		}
-		free(substring);
+		if (substring != NULL)
+			free(substring);
 		i++;
 	}
 	joined[indx] = NULL;
-	// debug
-	// int x = 0;
-	// while (joined[x] != NULL)
-	// {
-	// 	printf("joined[i]%s\n", joined[x]);
-	// 	x++;
-	// }
-	//
 	return (joined);
+}
+
+char	*free_dup(char *str)
+{
+	char	*dup_str;
+
+	dup_str = ft_strdup(str);
+	if (str != NULL)
+		free(str);
+	return (dup_str);
 }

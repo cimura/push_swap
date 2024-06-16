@@ -17,15 +17,18 @@ SRCS			=	srcs/sort/basic_utils_list.c \
 					srcs/sort/push_swap.c \
 					srcs/sort/to_substring.c
 
-SORT_MAIN_SRCS	=	srcs/sort/gpt_test.c \
+SORT_MAIN_SRCS	=	srcs/sort/main.c \
 
 GNL_SRCS		=	get_next_line/get_next_line.c \
 					get_next_line/get_next_line_utils.c
 
-CC				=	cc
 CHECKER_SRCS	=	srcs/checker/checker.c
 
+GNL_OBJS		=	$(GNL_SRCS:%.c=%.o)
+CHECKER_OBJS	=	$(CHECKER_SRCS:%.c=%.o)
+
 LIBFT			=	libft/libft.a
+CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
 OBJS			=	$(SOURCES:%.c=%.o)
 
@@ -53,7 +56,7 @@ bonus:
 		$(MAKE) BONUS_FLAG=true $(BONUS)
 
 clean:
-		rm -f $(OBJS)
+		rm -f $(OBJS) $(GNL_OBJS) $(CHECKER_OBJS)
 		$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean:	clean

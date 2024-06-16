@@ -1,1 +1,0 @@
-cc -o checker srcs/checker/checker.c libft/libft.a srcs/sort/setup_stack.c get_next_line/get_next_line.c srcs/sort/to_substring.c srcs/sort/operations_list.c srcs/sort/operation_to_a.c srcs/sort/operation_to_b.c  srcs/sort/same_operation.c srcs/sort/basic_utils_list.c 
