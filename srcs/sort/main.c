@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:50:18 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/16 15:48:52 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/17 08:42:39 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/node.h"
+#include <stdio.h>
 
 int	main(int argc, char *argv[])
 {
@@ -27,7 +28,7 @@ int	main(int argc, char *argv[])
 	if (count_stack_length(head_a) == 0)
 		return (free_node(head_a), free_node(head_b), no_nodes_print());
 	else if (count_stack_length(head_a) == 1)
-		return (free_node(head_a), free_node(head_b), 0);
+		return (free_node(head_a), free(head_b), 0);
 	else if (count_stack_length(head_a) == 2)
 		return (handle_two(&head_a), free_node(head_a), free_node(head_b), 0);
 	else if (count_stack_length(head_a) == 3)
@@ -36,4 +37,9 @@ int	main(int argc, char *argv[])
 	free_node(head_a);
 	free_node(head_b);
 	return (0);
+}
+
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q push_swap");
 }

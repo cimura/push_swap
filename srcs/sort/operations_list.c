@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:13 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/16 15:47:32 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/17 08:41:30 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ void	add_node(t_node **head, long data)
 void	free_node(t_node *head)
 {
 	t_node	*current;
+	t_node	*tmp;
 
 	current = head->next;
-	free(head);
 	while (current != head)
 	{
+		tmp = current->next;
 		free(current);
-		current = current->next;
+		current = tmp;
 	}
+	free(head);
 }
