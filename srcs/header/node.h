@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:27 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/16 15:51:52 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/17 08:29:34 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_node
 // in libft/
 void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
+int		decide_sign(const char *str, int *indx);
 
 // in gnl
 char	*get_next_line(int fd);
