@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:32:05 by cimy              #+#    #+#             */
-/*   Updated: 2024/06/17 08:37:58 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/17 09:01:13 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,38 @@ int	main(int argc, char *argv[])
 	if (error_handling(argv) == 1)
 		return (1);
 	setup_stack(&head_a, &head_b, argv);
-	while (gnl != NULL)
+	while (1)
 	{
 		gnl = get_next_line(0);
+		if (!gnl)
+			break ;
 		if (is_instruction(gnl) == false)
-			return (ft_putstr_fd("Error\n", 2), 1);
+		{
+			ft_putstr_fd("Error\n", 2);
+			free_node(head_a);
+			free_node(head_b);
+			free(gnl);
+			exit(1);
+		}
 		do_instruction(head_a, head_b, gnl);
+		free(gnl);
 	}
+	judge_kok(gnl, head_a, head_b);
+}
+
+int	judge_kok(char *gnl, t_node *head_a, t_node *head_b)
+{
+	if (!gnl)
+		free(gnl);
 	if (is_sorted(head_a) == false)
-		return (ft_putstr_fd("KO\n", 2), 1);
+	{
+		ft_putstr_fd("KO\n", 2);
+		free_node(head_a);
+		free_node(head_b);
+		exit(1);
+	}
 	ft_putstr_fd("OK\n", 1);
-	return (0);
+	free_node(head_a);
+	free_node(head_b);
+	exit(0);
 }
