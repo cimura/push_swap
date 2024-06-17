@@ -6,7 +6,7 @@
 /*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:46:13 by sshimura          #+#    #+#             */
-/*   Updated: 2024/06/17 08:41:30 by cimy             ###   ########.fr       */
+/*   Updated: 2024/06/18 00:35:45 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_node	*create_node(long data)
 	t_node	*new_node;
 
 	new_node = malloc(sizeof(t_node));
+	if (!new_node)
+		exit(EXIT_FAILURE);
 	new_node->data = data;
 	new_node->next = NULL;
 	new_node->prev = NULL;

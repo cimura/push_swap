@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   to_substring.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sshimura <sshimura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cimy <cimy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:54:14 by cimy              #+#    #+#             */
-/*   Updated: 2024/06/16 14:47:41 by sshimura         ###   ########.fr       */
+/*   Updated: 2024/06/18 00:33:47 by cimy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ char	**ft_double_strjoin(char **argv)
 	indx = 0;
 	joined = malloc(sizeof(char *) * (count_num_arr(argv, ' ') + 1));
 	if (!joined)
-		return (NULL);
+		exit (EXIT_FAILURE);
 	while (argv[i] != NULL)
 	{
 		j = 0;
 		substring = ft_split(argv[i], ' ');
+		if (!substring)
+			exit(EXIT_FAILURE);
 		while (substring[j] != NULL)
-		{
 			joined[indx++] = free_dup(substring[j++]);
-		}
 		if (substring != NULL)
 			free(substring);
 		i++;
