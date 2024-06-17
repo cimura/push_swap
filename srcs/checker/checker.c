@@ -118,10 +118,10 @@ int	judge_kok(char *gnl, t_node *head_a, t_node *head_b)
 		free(gnl);
 	if (is_sorted(head_a) == false)
 	{
-		ft_putstr_fd("KO\n", 2);
+		ft_putstr_fd("KO\n", 1);
 		free_node(head_a);
 		free_node(head_b);
-		exit(1);
+		exit(0);
 	}
 	ft_putstr_fd("OK\n", 1);
 	free_node(head_a);
