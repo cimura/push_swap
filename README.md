@@ -22,14 +22,14 @@ puseudo code
 #### テストケース
 
 ```
-chmod +x test.sh & ./test.sh
+make all && make bonus && chmod +x test.sh && ./test.sh
 
 ```
 
 ### 視覚化
 
 ```
-chmod +x visual.sh & ./visual.sh
+make all && make bonus && chmod +x visual.sh && ./visual.sh
 
 ```
 
