@@ -1,6 +1,8 @@
 # Push Swap
+## トルコソート?（課題に合わせた挿入ソート）　　
+　111/100（checkerの正誤判定でミスがあった）
 
-puseudo code
+### puseudo code
 
 1. スタックaとスタックbを宣言する
 
@@ -33,3 +35,11 @@ make all && make bonus && chmod +x visual.sh && ./visual.sh
 
 ```
 
+-------
+
+### ソートしている動画↓　 
+
+https://github.com/user-attachments/assets/d4547cb8-f95f-406c-b318-2f694a137aee
+
+https://push-swap-visualizer.vercel.app/
+のvisualizerを使わせていただきました．
