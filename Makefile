@@ -38,6 +38,8 @@ else
 		SOURCES = $(SRCS) $(SORT_MAIN_SRCS)
 endif
 
+all: $(NAME)
+
 $(LIBFT):
 		$(MAKE) -C $(LIBFT_DIR)
 
@@ -49,8 +51,6 @@ $(NAME): $(OBJS) $(LIBFT)
 
 $(BONUS): $(OBJS) $(LIBFT)
 		$(CC) $(CFLAGS) -o $(BONUS) $(OBJS) $(LIBFT)
-
-all:	$(NAME)
 
 bonus:
 		$(MAKE) BONUS_FLAG=true $(BONUS)
