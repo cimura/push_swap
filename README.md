@@ -1,6 +1,5 @@
 # Push Swap
 ## トルコソート?（課題に合わせた挿入ソート）　　
-### `Grade: 111/100`
 
 ### puseudo code
 
